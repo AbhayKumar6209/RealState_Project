@@ -1,0 +1,226 @@
+﻿@model RealEstate.Models.AgentMaster
+@{
+	ViewBag.Title = "Add Agent";
+	Layout = "~/Views/Shared/AdminLayoutPage.cshtml";
+}
+@using System.Data;
+
+
+
+<div class="container">
+	<div class="card border-0 shadow-lg mb-4">
+		<div class="card-header bg-primary pl-3 pb-0">
+			<h5 class="h5 text-white font-weight-bold mb-4">ADD AGENT</h5>
+		</div>
+		<div class="card-body p-0">
+			<div class="row">
+				<div class="col-lg-1 d-none d-lg-block"></div>
+				<div class="col-lg-10">
+					<div class="p-3" id="addAgentFrm">
+						@using (Html.BeginForm("_addAgent", "agent", FormMethod.Post, new { @enctype = "multipart/form-data", @id = "AgentFrm" }))
+						{
+							@Html.ValidationSummary(true)
+							<div class="form-group row">
+								<div class="col-sm-6">
+									@Html.LabelFor(m => m.Name)
+									@Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+									@Html.ValidationMessageFor(m => m.Name, "", new { @type = "text", @class = "text-danger" })
+									@Html.HiddenFor(m => m.Member_Id)
+								</div>
+								<div class="col-sm-6">
+									@Html.LabelFor(m => m.FatherName)
+									@Html.TextBoxFor(m => m.FatherName, new { @type = "text", @class = "form-control" })
+									@Html.ValidationMessageFor(m => m.FatherName, "", new { @class = "text-danger" })
+								</div>
+								<div class="col-sm-6">
+									@Html.LabelFor(m => m.Mobile)
+									@Html.TextBoxFor(m => m.Mobile, new { @type = "text", @class = "form-control" })
+									@Html.ValidationMessageFor(m => m.Mobile, "", new { @class = "text-danger" })
+								</div>
+								<div class="col-sm-6">
+									@Html.LabelFor(m => m.Gender)
+									@Html.DropDownListFor(m => m.Gender, new List<SelectListItem> {
+								   new SelectListItem(){ Text = "--select--"},
+								   new SelectListItem(){ Text = "Male", Value = "Male"},
+								   new SelectListItem(){ Text = "Female", Value = "Female"}
+							   }, new { @class = "form-control" })
+									@Html.ValidationMessageFor(m => m.Gender, "", new { @class = "text-danger" })
+								</div>
+								<div class="col-sm-6">
+									@Html.LabelFor(m => m.Email)
+									@Html.TextBoxFor(m => m.Email, new { @type = "email", @class = "form-control" })
+									@Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+								</div>
+								<div class="col-sm-6">
+									@Html.LabelFor(m => m.AdharNo)
+									@Html.TextBoxFor(m => m.AdharNo, new { @type = "text", @class = "form-control" })
+									@Html.ValidationMessageFor(m => m.AdharNo, "", new { @class = "text-danger" })
+								</div>
+								<div class="col-sm-6">
+									@Html.LabelFor(m => m.PanNo)
+									@Html.TextBoxFor(m => m.PanNo, new { @type = "text", @class = "form-control" })
+									@Html.ValidationMessageFor(m => m.PanNo, "", new { @class = "text-danger" })
+								</div>
+								<div class="col-sm-6">
+									@Html.LabelFor(m => m.DOB)
+									@Html.TextBoxFor(m => m.DOB, new { @type = "date", @class = "form-control" })
+									@Html.ValidationMessageFor(m => m.DOB, "", new { @class = "text-danger" })
+								</div>
+								<div class="col-sm-6">
+									@Html.LabelFor(m => m.BankName)
+									@Html.TextBoxFor(m => m.BankName, new { @type = "text", @class = "form-control" })
+									@Html.ValidationMessageFor(m => m.BankName, "", new { @class = "text-danger" })
+								</div>
+								<div class="col-sm-6">
+									@Html.LabelFor(m => m.Branch)
+									@Html.TextBoxFor(m => m.Branch, new { @type = "text", @class = "form-control" })
+									@Html.ValidationMessageFor(m => m.Branch, "", new { @class = "text-danger" })
+								</div>
+								<div class="col-sm-6">
+									@Html.LabelFor(m => m.IFSCCode)
+									@Html.TextBoxFor(m => m.IFSCCode, new { @type = "text", @class = "form-control" })
+									@Html.ValidationMessageFor(m => m.IFSCCode, "", new { @class = "text-danger" })
+								</div>
+								<div class="col-sm-6">
+									@Html.LabelFor(m => m.AccountNo)
+									@Html.TextBoxFor(m => m.AccountNo, new { @type = "number", @class = "form-control" })
+									@Html.ValidationMessageFor(m => m.AccountNo, "", new { @class = "text-danger" })
+								</div>
+								<div class="col-sm-6">
+									@Html.LabelFor(m => m._profilePic)
+									@Html.TextBoxFor(m => m._profilePic, new { @type = "file", @class = "form-control" })
+									@Html.ValidationMessageFor(m => m._profilePic, "", new { @class = "text-danger" })
+								</div>
+								<div class="col-sm-6">
+									@Html.LabelFor(m => m.Address)
+									@Html.TextAreaFor(m => m.Address, new { @class = "form-control" })
+									@Html.ValidationMessageFor(m => m.Address, "", new { @class = "text-danger" })
+								</div>
+								<div class="col-sm-12 mt-5">
+									<input type="submit" value="ADD AGENT" class="btn btn-primary btn-block" id="btn_addAgent" />
+								</div>
+							</div>
+						}
+						
+					</div>
+				</div>
+				<div class="col-lg-1 d-none d-lg-block"></div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<div class="card shadow mb-4">
+	<div class="card-header py-3">
+		<h5 class="m-0 font-weight-bold text-primary">Agent Details</h5>
+	</div>
+	<div class="card-body">
+		<div class="table-responsive">
+			<div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
+				<div class="row">
+					<div class="col-sm-12">
+						<table class="table table-bordered dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
+							<thead>
+								<tr role="row">
+									<th>Sr. No.</th>
+									<th>Agent_Name</th>
+									<th>Father_Name</th>
+									<th>Mobile No</th>
+									<th>Gender</th>
+									<th>Email</th>
+									<th>Aadhar No</th>
+									<th>PAN No</th>
+									<th>DOB</th>
+									<th>Bank_Name</th>
+									<th>Branch</th>
+									<th>IFSC_Code</th>
+									<th>A/C No</th>
+									<th>Profile</th>
+									<th>Address</th>
+									<th>Action</th>
+								</tr>
+							</thead>
+							<tbody>
+								@{
+									int i = 0;
+									string Image = null;
+									if (Model.dt != null && Model.dt.Rows.Count > 0)
+									{
+										foreach (DataRow dr in Model.dt.Rows)
+										{
+											i++;
+											Image = dr["ProfilePic"].ToString();
+											<tr>
+												<td>@i</td>
+												<td>@dr["Name"]</td>
+												<td>@dr["FatherName"]</td>
+												<td>@dr["Mobile"]</td>
+												<td>@dr["Gender"]</td>
+												<td>@dr["Email"]</td>
+												<td>@dr["AdharNo"]</td>
+												<td>@dr["PanNo"]</td>
+												<td>@dr["DOB"]</td>
+												<td>@dr["BankName"]</td>
+												<td>@dr["Branch"]</td>
+												<td>@dr["IFSCCode"]</td>
+												<td>@dr["AccountNo"]</td>
+												<td>
+													@if (Image != null && Image != "")
+													{
+														<img class="img-profile rounded-circle" onclick="FullImageView('@Image')" data-toggle="modal" data-target="#fullImageView" style="width: 80px; height: 80px; cursor: pointer;" src="@Image">
+													}
+													else
+													{
+														<img class="img-profile rounded-circle" style="width: 80px; height: 80px;" src="~/AssetsUser/img/user.png">
+													}
+
+												</td>
+												<td>@dr["Address"]</td>
+												<td>
+													<a href="javascript:void(0)" class="btn btn-sm text-primary" onclick="_update('@dr["Member_Id"]')"><i class="fa fa-edit"></i></a>
+													<a href="javascript:void(0)" class="btn btn-sm text-danger" onclick="_delete('@dr["Member_Id"]')"><i class="fa fa-trash"></i></a>
+												</td>
+											</tr>
+										}
+									}
+								}
+
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<script>
+	function _update(Id) {
+		var data = { Member_Id: Id };
+		$.post('/Agent/AddAgent', data, function (d) {
+			$('#addAgentFrm').html($(d).find('#AgentFrm'));
+			$('#btn_addAgent').val('');
+			$('#btn_addAgent').val('UPDATE');
+		});
+	}
+	function _delete(Id) {
+		var data = { Member_Id: Id };
+		var con = confirm('Are you sure you want to delete this information?');
+		if (con) {
+			$.post('/Agent/deleteAgent', data, function (d) {
+				if (d != '0') {
+					alert(d);
+					location.reload();
+				}
+				else {
+					alert('Data not delete, Server error occured!');
+				}
+			});
+		}
+		
+	}
+</script>
+

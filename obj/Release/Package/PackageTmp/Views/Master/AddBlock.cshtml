@@ -1,0 +1,131 @@
+﻿@model RealEstate.Models.AddBlock
+@{
+    ViewBag.Title = "AddBlock";
+    Layout = "~/Views/Shared/AdminLayoutPage.cshtml";
+}
+@using System.Data;
+<div class="container">
+	<div class="card border-0 shadow-lg mb-4">
+		<div class="card-header bg-primary pl-3 pb-0">
+			<h5 class="h5 text-white font-weight-bold mb-4">ADD BLOCK</h5>
+		</div>
+		<div class="card-body p-0">
+			<div class="row">
+				<div class="col-lg-1 d-none d-lg-block"></div>
+				<div class="col-lg-10">
+					<div class="p-3" id="blockForm">
+						<form method="post" id="addBlockFrm">
+							<div class="form-group row">
+								<div class="col-sm-4">
+									@Html.HiddenFor(m => m.Id)
+									@Html.LabelFor(m => m.ProjectId)
+									@Html.DropDownListFor(m => m.ProjectId, (List<SelectListItem>)ViewBag.ProjectList, new { @id = "ProjectId", @class = "form-control" })
+
+									@Html.ValidationMessageFor(m => m.ProjectId, "", new { @class = "text-danger" })
+								</div>
+                                <div class="col-sm-4">
+                                    <label>Block</label>
+                                    @Html.LabelFor(m => m.Block)
+                                    @Html.TextBoxFor(m => m.Block, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.Block, "", new { @class = "text-danger" })
+                                </div>
+								<div class="col-sm-4 pb-5">
+									<input type="submit" value="ADD" class="btn btn-primary btn-block mt-4" id="btn_AddBlock" />
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+				<div class="col-lg-1 d-none d-lg-block"></div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<div class="card shadow mb-4">
+	<div class="card-header py-3">
+		<h5 class="m-0 font-weight-bold text-primary">Block Details</h5>
+	</div>
+	<div class="card-body">
+		<div class="table-responsive">
+			<div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
+				<div class="row">
+					<div class="col-sm-12">
+						<table class="table table-bordered dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
+							<thead>
+								<tr role="row">
+									<th>Sr. No.</th>
+									<th>Project Name</th>
+									<th>Block</th>
+									<th>Action</th>
+								</tr>
+							</thead>
+                            <tbody>
+                                @{
+                                    int i = 0;
+                                    
+                                    if (Model._dt != null && Model._dt.Rows.Count > 0)
+                                    {
+                                        foreach (DataRow dr in Model._dt.Rows)
+                                        {
+                                            i++;
+                                            <tr>
+                                                <td>@i</td>
+                                                <td>@dr["SiteName"]</td>
+                                                <td>@dr["BlockName"]</td>
+                                                <td>
+                                                    <a href="javascript:void(0)" class="btn btn-sm text-primary" onclick="_update('@dr["Id"]')"><i class="fa fa-edit"></i></a>
+                                                    <a href="javascript:void(0)" class="btn btn-sm text-danger" onclick="_delete('@dr["Id"]')"><i class="fa fa-trash"></i></a>
+                                                </td>
+                                            </tr>
+                                        }
+                                    }
+                                }
+                            </tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<script>
+	function _update(Id) {
+		var data = { Id: Id };
+		$.post('/Master/updateBlock', data, function (d) {
+			if (d != '0') {
+				d = eval(d);
+				$.each(d, function (k, v) {
+					$('#ProjectId').val(v.SiteId);
+					$('#Id').val(v.Id);
+					$('#Block').val(v.BlockName);
+				});
+				$('#btn_AddBlock').val('');
+				$('#btn_AddBlock').val('UPDATE');
+			}
+			
+		});
+	}
+	function _delete(Id) {
+		var data = { Id: Id };
+		var con = confirm('Are you sure you want to delete this information?');
+		if (con) {
+			$.post('/Master/deleteBlock', data, function (d) {
+				if (d != '0') {
+					alert(d);
+					location.reload();
+				}
+				else {
+					alert('Data not delete, Server error occured!');
+				}
+			});
+		}
+
+	}
+</script>
+
+

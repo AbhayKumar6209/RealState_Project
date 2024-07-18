@@ -1,0 +1,501 @@
+﻿@model RealEstate.Models.SalePlot
+@{
+	ViewBag.Title = "Sale Plot";
+	Layout = "~/Views/Shared/AdminLayoutPage.cshtml";
+}
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<script src="~/Scripts/CommonJS/Common.js"></script>
+
+<div class="container-fluid">
+	<div class="card border-0 shadow-lg mb-4">
+		<div class="card-header bg-primary pl-3 pb-0">
+			<h5 class="h5 text-white font-weight-bold mb-4">Plot Sale Details</h5>
+		</div>
+		<div class="card-body p-0">
+
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="p-4">
+						<form method="post" enctype="multipart/form-data">
+							@*<div class="row mt-3 d-none">
+									<div class="col-sm-3">
+										<input type="radio" name="saletype" />Sale to Customer
+									</div>
+									<div class="col-sm-3">
+										<input type="radio" name="saletype" />Sale to Agent
+									</div>
+								</div>
+								<hr />*@
+							<a href="javascript:void(0)" class="font-weight-bold">Agent Details</a>
+							<div class="form-group row mb-4 mt-3">
+								<div class="col-sm-4">
+									<label>Select Agent</label>
+									@Html.DropDownListFor(m => m.AgentId, Model.AgentLst, new { @class = "form-control" })
+								</div>
+								@*<div class="col-sm-4">
+										<label>Agent Code</label>
+										<input class="form-control" id="AgentCode" readonly />
+									</div>
+									<div class="col-sm-4">
+										<label>Agent Name</label>
+										<input class="form-control" id="AgentName" readonly />
+									</div>*@
+							</div>
+							<hr />
+							<a href="javascript:void(0)" class="font-weight-bold">Customer Details</a>
+							<div class="form-group row mb-4 mt-3">
+								<div class="col-sm-4">
+									<label>Name</label>
+									@Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+								</div>
+
+								<div class="col-sm-4">
+									<label>Father Name</label>
+									@Html.TextBoxFor(m => m.FatherName, new { @class = "form-control" })
+								</div>
+								<div class="col-sm-4">
+									<label>Permanent Address</label>
+									@Html.TextBoxFor(m => m.PermanentAddress, new { @class = "form-control" })
+								</div>
+								<div class="col-sm-4">
+									<label>Pin Code</label>
+									@Html.TextBoxFor(m => m.PinCode, new { @class = "form-control" })
+								</div>
+
+								<div class="col-sm-6">
+									<label>City</label>
+									@Html.TextBoxFor(m => m.City, new { @class = "form-control" })
+								</div>
+								<div class="col-sm-6">
+									<label>State</label>
+									@Html.TextBoxFor(m => m.State, new { @class = "form-control" })
+								</div>
+								<div class="col-sm-12 mt-3 mb-3">
+									<input type="checkbox" onchange="Sameaspermanentaddress()" />Same as permanent address
+								</div>
+
+								<div class="col-sm-8">
+									<label>Correspondence Address</label>
+									@Html.TextBoxFor(m => m.C_Address, new { @class = "form-control" })
+								</div>
+								<div class="col-sm-4">
+									<label>Pin Code</label>
+									@Html.TextBoxFor(m => m.C_PinCode, new { @class = "form-control" })
+								</div>
+
+								<div class="col-sm-6">
+									<label>City</label>
+									@Html.TextBoxFor(m => m.C_City, new { @class = "form-control" })
+								</div>
+								<div class="col-sm-6">
+									<label>State</label>
+									@Html.TextBoxFor(m => m.C_State, new { @class = "form-control" })
+								</div>
+								<div class="col-sm-6">
+									<label>Phone No.</label>
+									@Html.TextBoxFor(m => m.PhoneNo, new { @class = "form-control" })
+								</div>
+								<div class="col-sm-6">
+									<label>Email</label>
+									@Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+								</div>
+								<div class="col-sm-6">
+									<label>Pan No</label>
+									@Html.TextBoxFor(m => m.PanNo, new { @class = "form-control" })
+								</div>
+								<div class="col-sm-6">
+									<label>Occupation</label>
+									@Html.TextBoxFor(m => m.Occupation, new { @class = "form-control" })
+								</div>
+								<div class="col-sm-6">
+									<label>Nationality</label>
+									@Html.TextBoxFor(m => m.Nationality, new { @class = "form-control" })
+								</div>
+								<div class="col-sm-6"></div>
+								<div class="col-sm-3">
+									<label>Aadhar Front</label>
+									<input type="file" class="form-control" id="FU_AdharFront" name="FU_AdharFront" />
+								</div>
+								<div class="col-sm-3">
+									<label>Aadhar Back</label>
+									<input type="file" class="form-control" id="FU_AdharBack" name="FU_AdharBack" />
+								</div>
+								<div class="col-sm-3">
+									<label>DL</label>
+									<input type="file" class="form-control" id="FU_drivinglicence" name="FU_drivinglicence" />
+								</div>
+								<div class="col-sm-3">
+									<label>PAN</label>
+									<input type="file" class="form-control" id="FU_PAN" name="FU_PAN" />
+								</div>
+							</div>
+							<hr />
+							<a href="javascript:void(0)" class="font-weight-bold">Nominee Details</a>
+							<div class="form-group row mb-4 mt-3">
+								<div class="col-sm-6">
+									<label>Nominee Name</label>
+									@Html.TextBoxFor(m => m.NomineeName, new { @class = "form-control" })
+								</div>
+								<div class="col-sm-6">
+									<label>Relation</label>
+									@Html.TextBoxFor(m => m.Relation, new { @class = "form-control" })
+								</div>
+							</div>
+							<hr />
+							<a href="javascript:void(0)" class="font-weight-bold">Plot Details</a>
+							<div class="form-group row mb-4 mt-3">
+								<div class="col-sm-4">
+									<label>Property Name</label>
+									@Html.DropDownListFor(m => m.PropertyId, Model.SiteLst, new { @class = "form-control", @onchange = "BindBlock('PropertyId','Block')" })
+								</div>
+								<div class="col-sm-4">
+									<label>Block</label>
+									@Html.DropDownListFor(m => m.Block, new List<SelectListItem>() {
+								   new SelectListItem() { Text = "--none--", Value = "" } },
+								   new { @class = "form-control", @onchange = "BindPlotNo('PropertyId','Block','PlotNo')" })
+
+								</div>
+								<div class="col-sm-4">
+									<label>Plot No.</label>
+									@Html.DropDownListFor(m => m.PlotNo, new List<SelectListItem>() { new SelectListItem() { Text = "--none--", Value = "" } }, new { @class = "form-control", @onchange = "GetPlotDetails()" })
+								</div>
+							</div>
+							<hr />
+							<div class="form-group row mt-4 mb-3">
+
+								<div class="col-sm-4">
+									<label>Plot Rate</label>
+									@Html.TextBoxFor(m => m.PlotRate, new { @class = "form-control", @onchange = "FinalCalculation()" })
+								</div>
+								<div class="col-sm-4">
+									<label>Plot Area</label>
+									@Html.TextBoxFor(m => m.PlotArea, new { @class = "form-control", @readonly = "readonly" })
+								</div>
+								<div class="col-sm-4">
+									<label>Plot Cost</label>
+									@Html.TextBoxFor(m => m.PlotCost, new { @class = "form-control", @readonly = "readonly" })
+								</div>
+								<div class="col-sm-4">
+									<label>Development Rate(Per Sq. Ft.)</label>
+									@Html.TextBoxFor(m => m.DevelopmentRate, new { @class = "form-control", @onchange = "FinalCalculation()" })
+								</div>
+								<div class="col-sm-4">
+									<label>Development Charge</label>
+									@Html.TextBoxFor(m => m.DevelopmentCharge, new { @class = "form-control", @readonly = "readonly" })
+								</div>
+
+								<div class="col-sm-4">
+									<label>PLC Amount</label>
+									@Html.TextBoxFor(m => m.PLCAmount, new { @class = "form-control", @onchange = "FinalCalculation()" })
+								</div>
+
+								<div class="col-sm-4">
+									<label>Other Charges</label>
+									@Html.TextBoxFor(m => m.OtherCharges, new { @class = "form-control", @onchange = "FinalCalculation()" })
+								</div>
+
+								<div class="col-sm-4">
+									<label>Total Plot Cost( ₹ )</label>
+									@Html.TextBoxFor(m => m.TotalPlotCost, new { @class = "form-control", @readonly = "readonly" })
+								</div>
+								<div class="col-sm-4">
+									<label>Discount( ₹ )</label>
+									@Html.TextBoxFor(m => m.Discount, new { @class = "form-control", @onchange = "FinalCalculation()" })
+								</div>
+								<div class="col-sm-4">
+									<label>Final Payable</label>
+									@Html.TextBoxFor(m => m.FinalPayable, new { @class = "form-control", @readonly = "readonly" })
+								</div>
+
+								<div class="col-sm-4">
+									<label>Booking Date <span style="color:red">*</span> </label>
+									@Html.TextBoxFor(m => m.Date, new { @class = "form-control", @type = "date", required = "required" })
+								</div>
+								<div class="col-sm-4">
+									<label>Remark</label>
+									@Html.TextBoxFor(m => m.Remark, new { @class = "form-control" })
+								</div>
+							</div>
+							<hr />
+							<div class="form-group row mt-4 mb-3">
+								<div class="col-sm-3">
+									<label>Payment Plan</label>
+									@Html.DropDownListFor(m => m.PaymentType, new List<SelectListItem>() {
+								   new SelectListItem() { Text = "Select", Value = "" },
+								   new SelectListItem() { Text = "Full Payment", Value = "Full" } ,
+								   new SelectListItem() { Text = "EMI Plan", Value = "EMI" } },
+								   new { @class = "form-control", @onchange = "_PaymentPlan(this)" })
+								</div>
+								@*</div>
+									<div class="form-group mt-4">*@
+								<div class="col-sm-3 FullPayment EMIPlan" style="display:none">
+									<label>Booking Amount</label>
+									@Html.TextBoxFor(m => m.BookingAmount, new { @class = "form-control", @onchange = "FinalCalculation()" })
+								</div>
+								<div class="col-sm-3 FullPayment EMIPlan" style="display:none">
+									<label>Due Amount</label>
+									@Html.TextBoxFor(m => m.DueAmount, new { @class = "form-control", @readonly = "readonly" })
+
+								</div>
+								<div class="col-sm-3 FullPayment EMIPlan" style="display:none">
+									<label>Payment Mode</label>
+									@Html.DropDownListFor(m => m.PaymentMode, new List<SelectListItem>() {
+								  new SelectListItem() { Text = "Cash", Value = "Cash" },
+								  new SelectListItem() { Text = "Cheque", Value = "Cheque" } ,
+								  new SelectListItem() { Text = "DD", Value = "DD" },
+								  new SelectListItem() { Text = "NEFT/RTGS", Value = "NEFT" },
+								  new SelectListItem() { Text = "Online", Value = "Online" }},
+								  new { @class = "form-control", @onchange = "_PaymentMode(this)" })
+								</div>
+								@*<div class="col-sm-12">
+										<hr />
+									</div>*@
+							</div>
+							<div class="form-group row">
+
+								<div class="col-sm-4 EMIPlan" style="display:none">
+									<label>No. of Months</label>
+									@Html.TextBoxFor(m => m.EMI_Month, new { @class = "form-control", @onchange = "FinalCalculation()" })
+								</div>
+								<div class="col-sm-4 EMIPlan" style="display:none">
+									<label>Installment Amount</label>
+									@Html.TextBoxFor(m => m.InstallmentAmount, new { @class = "form-control", @readonly = "readonly" })
+								</div>
+								<div class="col-sm-4 mt-4 FullPayment EMIPlan" style="display:none">
+									@Html.CheckBoxFor(m => m.Is_Reminder)
+									Please check if you want to add remaining booking amount in installments
+								</div>
+								@*<div class="col-sm-12">
+										<hr />
+									</div>*@
+							</div>
+
+
+
+
+
+
+							<div class="form-group row mt-4">
+								<div class="col-sm-4 AC_Number" style="display:none">
+									<label>A/C Number</label>
+									@Html.TextBoxFor(m => m.AC_Number, new { @class = "form-control" })
+								</div>
+								<div class="col-sm-4 IFSC" style="display:none">
+									<label>IFSC</label>
+									@Html.TextBoxFor(m => m.IFSC, new { @class = "form-control" })
+								</div>
+								<div class="col-sm-4 BankName" style="display:none">
+									<label>Bank Name</label>
+									@Html.TextBoxFor(m => m.BankName, new { @class = "form-control" })
+								</div>
+								<div class="col-sm-4 BranchName" style="display:none">
+									<label>Branch Name</label>
+									@Html.TextBoxFor(m => m.BranchName, new { @class = "form-control" })
+								</div>
+								<div class="col-sm-4 ChequeDate" style="display:none">
+									<label>Cheque Date</label>
+									@Html.TextBoxFor(m => m.ChequeDate, new { @class = "form-control", @type = "date" })
+								</div>
+								<div class="col-sm-4 TransactionID" style="display:none">
+									<label>Transaction ID</label>
+									@Html.TextBoxFor(m => m.TransactionID, new { @class = "form-control" })
+								</div>
+
+
+							</div>
+							@*<hr />*@
+							<div class="col-sm-4">
+								<input type="submit" class="btn btn-outline-info btn-block" value="Book Now" />
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+
+    $(document).ready(function () {
+
+        if ('@ViewBag.flag' != '') {
+            alert('@ViewBag.msg');
+            if ('@ViewBag.flag' == '1') {
+               window.location.href = window.location.href;
+            }
+        }
+
+
+
+    })
+
+
+
+    function FinalCalculation() {
+
+        var plotRate = parseFloat($('#PlotRate').val() || 0);
+        var plotArea = parseInt($('#PlotArea').val()||0);
+
+        var plotCost = plotRate * plotArea;
+
+        $('#PlotCost').val(plotCost.toFixed(0));
+
+        var developmentRate = $('#DevelopmentRate').val();
+
+        var developmentcharge = developmentRate * plotArea;
+
+        $('#DevelopmentCharge').val(developmentcharge.toFixed(0));
+
+        var PLCAmounts = parseFloat($('#PLCAmount').val() || 0)
+        var OtherCharge = parseFloat($('#OtherCharges').val() || 0)
+
+        var totalPlotCost = plotCost + developmentcharge + PLCAmounts + OtherCharge;
+
+        $('#TotalPlotCost').val(totalPlotCost.toFixed(0));
+
+        var discount = parseFloat($('#Discount').val() || 0);
+
+        var FinalAmt = totalPlotCost - discount;
+
+        $('#FinalPayable').val(FinalAmt.toFixed(0));
+
+        var bookingAmount = parseFloat($('#BookingAmount').val() || 0);
+
+        var dueAmount = FinalAmt - bookingAmount;
+
+        $('#DueAmount').val(dueAmount.toFixed(0));
+
+
+        if ($('#PaymentType').val() == 'EMI') {
+            var EMIMonth = parseInt($('#EMI_Month').val() || 1);
+
+            var EMIAmt = dueAmount / EMIMonth;
+
+            $('#InstallmentAmount').val(EMIAmt.toFixed(0));
+        }
+        else {
+            $('#EMI_Month').val(0);
+            $('#InstallmentAmount').val(0);
+        }
+
+
+
+
+    }
+
+
+
+    function GetPlotDetails()
+    {
+        debugger;
+
+        var PlotId = $('#PlotNo').val();
+        if (PlotId == '') {
+            alert('Please Select Plot');
+            $('#PlotRate').val('');
+            $('#PlotArea').val('');
+            $('#PlotCost').val('');
+            $('#TotalPlotCost').val('');
+            $('#FinalPayable').val('');
+            return;
+        }
+        $.post('/Master/GetMasterData', { Action: 5, P1: PlotId }, function (data) {
+            if (data != 'False') {
+                var data = eval(data);
+
+                $('#PlotRate').val(data[0].PlotRate);
+                $('#PlotArea').val(data[0].PlotArea);
+                $('#PlotCost').val(data[0].PlotCost);
+
+
+                FinalCalculation();
+
+
+
+            }
+        })
+
+
+
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+    function Sameaspermanentaddress() {
+
+        $('#C_Address').val($('#PermanentAddress').val());
+        $('#C_PinCode').val($('#PinCode').val());
+        $('#C_City').val($('#City').val());
+        $('#C_State').val($('#State').val());
+
+    }
+
+
+
+    //$(document).ready(function () {
+    //    $('#fullPayment').hide();
+    //    $('#emiPayment').hide();
+    //    $('#_paymodeBank').hide();
+    //    $('#_paymodeCard').hide();
+    //});
+
+    function _PaymentPlan(element) {
+
+        $('.FullPayment').hide();
+        $('.EMIPlan').hide();
+
+
+        var _type = element.value.toLowerCase();
+        if (_type == 'full') {
+            $('.FullPayment').show();
+        }
+        else if (_type == "emi") {
+            $('.EMIPlan').show();
+        }
+    }
+
+    function _PaymentMode(element) {
+        $('.AC_Number').hide();
+        $('.IFSC').hide();
+        $('.BankName').hide();
+        $('.BranchName').hide();
+        $('.ChequeDate').hide();
+        $('.TransactionID').hide();
+
+        var _mode = element.value.toLowerCase();
+
+        if (_mode == 'cheque' || _mode == 'dd') {
+            $('.AC_Number').show();
+            $('.IFSC').show();
+            $('.BankName').show();
+            $('.BranchName').show();
+            $('.ChequeDate').show();
+        }
+        else if (_mode == 'neft') {
+            $('.AC_Number').show();
+            $('.IFSC').show();
+            $('.BankName').show();
+            $('.BranchName').show();
+            $('.ChequeDate').show();
+            $('.TransactionID').show();
+        }
+        else if (_mode == 'online') {
+            $('.TransactionID').show();
+        }
+    }
+
+
+
+
+
+</script>

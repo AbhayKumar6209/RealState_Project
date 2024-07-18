@@ -1,0 +1,90 @@
+﻿@model RealEstate.Models.AgentMaster
+@{
+    ViewBag.Title = "Agent List";
+    Layout = "~/Views/Shared/AdminLayoutPage.cshtml";
+}
+@using System.Data;
+
+<div class="card shadow mb-4">
+	<div class="card-header py-3">
+		<h5 class="m-0 font-weight-bold text-primary">Agent List</h5>
+	</div>
+	<div class="card-body">
+		<div class="table-responsive">
+			<div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
+				<div class="row">
+					<div class="col-sm-12">
+						<table class="table table-bordered dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
+							<thead>
+								<tr role="row">
+									<th>Sr. No.</th>
+									<th>Agent Id</th>
+									<th>Password</th>
+									<th>Agent_Name</th>
+									<th>Father_Name</th>
+									<th>Mobile No</th>
+									<th>Gender</th>
+									<th>Email</th>
+									<th>Aadhar No</th>
+									<th>PAN No</th>
+									<th>DOB</th>
+									<th>Bank_Name</th>
+									<th>Branch</th>
+									<th>IFSC_Code</th>
+									<th>A/C No</th>
+									<th>Profile</th>
+									<th>Address</th>
+								</tr>
+							</thead>
+							<tbody>
+								@{
+									int i = 0;
+									string Image = null;
+									if (Model.dt != null && Model.dt.Rows.Count > 0)
+									{
+										foreach (DataRow dr in Model.dt.Rows)
+										{
+											i++;
+											Image = dr["ProfilePic"].ToString();
+											<tr>
+												<td>@i</td>
+												<td>@dr["Member_Id"]</td>
+												<td>@dr["Psw"]</td>
+												<td>@dr["Name"]</td>
+												<td>@dr["FatherName"]</td>
+												<td>@dr["Mobile"]</td>
+												<td>@dr["Gender"]</td>
+												<td>@dr["Email"]</td>
+												<td>@dr["AdharNo"]</td>
+												<td>@dr["PanNo"]</td>
+												<td>@dr["DOB"]</td>
+												<td>@dr["BankName"]</td>
+												<td>@dr["Branch"]</td>
+												<td>@dr["IFSCCode"]</td>
+												<td>@dr["AccountNo"]</td>
+												<td>
+													@if (Image != null && Image != "")
+													{
+														<img class="img-profile rounded-circle" onclick="FullImageView('@Image')" data-toggle="modal" data-target="#fullImageView" style="width: 80px; height: 80px; cursor: pointer;" src="@Image">
+													}
+													else
+													{
+														<img class="img-profile rounded-circle" style="width: 80px; height: 80px;" src="~/AssetsUser/img/user.png">
+													}
+
+												</td>
+												<td>@dr["Address"]</td>
+											</tr>
+										}
+									}
+								}
+
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+

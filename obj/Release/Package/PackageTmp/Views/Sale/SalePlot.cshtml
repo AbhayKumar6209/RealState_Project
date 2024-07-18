@@ -1,0 +1,368 @@
+﻿
+@{
+	ViewBag.Title = "Sale Plot";
+	Layout = "~/Views/Shared/AdminLayoutPage.cshtml";
+}
+
+<div class="container">
+	<div class="card border-0 shadow-lg mb-4">
+		<div class="card-header bg-primary pl-3 pb-0">
+			<h5 class="h5 text-white font-weight-bold mb-4">Plot Sale Details</h5>
+		</div>
+		<div class="card-body p-0">
+
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="p-4">
+						<form>
+							<div class="row mt-3 d-none">
+								<div class="col-sm-3">
+									<input type="radio" name="saletype" />Sale to Customer
+								</div>
+								<div class="col-sm-3">
+									<input type="radio" name="saletype" />Sale to Agent
+								</div>
+							</div>
+							<hr />
+							<a href="javascript:void(0)" class="font-weight-bold">Agent Details</a>
+							<div class="form-group row mb-4 mt-3">
+								<div class="col-sm-4">
+									<label>Select Agent</label>
+									<select class="form-control">
+										<option>Select</option>
+										<option value="2">Agent(0001)</option>
+										<option value="3">Agent(0002)</option>
+										<option value="4">Agent(0003)</option>
+										<option value="5">Agent(0004)</option>
+										<option value="6">Agent(0005)</option>
+
+									</select>
+								</div>
+								<div class="col-sm-4">
+									<label>Agent Code</label>
+									<input class="form-control" readonly />
+								</div>
+								<div class="col-sm-4">
+									<label>Agent Name</label>
+									<input class="form-control" readonly />
+								</div>
+							</div>
+							<hr />
+							<a href="javascript:void(0)" class="font-weight-bold">Customer Details</a>
+							<div class="form-group row mb-4 mt-3">
+								<div class="col-sm-5">
+									<label>Name</label>
+									<input class="form-control" />
+								</div>
+								<div class="col-sm-2">
+									<label>Title</label>
+									<select class="form-control">
+										<option>Select</option>
+										<option value="S/O">S/O</option>
+										<option value="D/O">D/O</option>
+										<option value="W/O">W/O</option>
+									</select>
+								</div>
+								<div class="col-sm-5">
+									<label>S/W/D OF:</label>
+									<input class="form-control" />
+								</div>
+								<div class="col-sm-8">
+									<label>Permanent Address</label>
+									<textarea class="form-control"></textarea>
+								</div>
+								<div class="col-sm-4">
+									<label>Pin Code</label>
+									<input class="form-control" />
+								</div>
+
+								<div class="col-sm-6">
+									<label>City</label>
+									<input class="form-control" />
+								</div>
+								<div class="col-sm-6">
+									<label>State</label>
+									<input class="form-control" />
+								</div>
+								<div class="col-sm-12 mt-3 mb-3">
+									<input type="checkbox" />Same as permanent address
+								</div>
+
+								<div class="col-sm-8">
+									<label>Correspondence Address</label>
+									<textarea class="form-control"></textarea>
+								</div>
+								<div class="col-sm-4">
+									<label>Pin Code</label>
+									<input class="form-control" />
+								</div>
+
+								<div class="col-sm-6">
+									<label>City</label>
+									<input class="form-control" />
+								</div>
+								<div class="col-sm-6">
+									<label>State</label>
+									<input class="form-control" />
+								</div>
+								<div class="col-sm-6">
+									<label>Phone No.</label>
+									<input class="form-control" />
+								</div>
+								<div class="col-sm-6">
+									<label>Email</label>
+									<input class="form-control" />
+								</div>
+								<div class="col-sm-6">
+									<label>Pan No</label>
+									<input class="form-control" />
+								</div>
+								<div class="col-sm-6">
+									<label>Occupation</label>
+									<input class="form-control" />
+								</div>
+								<div class="col-sm-6">
+									<label>Nationality</label>
+									<input class="form-control" />
+								</div>
+								<div class="col-sm-6"></div>
+								<div class="col-sm-3">
+									<label>Aadhar</label>
+									<input type="file" class="form-control" />
+								</div>
+								<div class="col-sm-3">
+									<label>Voter Id</label>
+									<input type="file" class="form-control" />
+								</div>
+								<div class="col-sm-3">
+									<label>DL</label>
+									<input type="file" class="form-control" />
+								</div>
+								<div class="col-sm-3">
+									<label>Profile Picture</label>
+									<input type="file" class="form-control" />
+								</div>
+							</div>
+							<hr />
+							<a href="javascript:void(0)" class="font-weight-bold">Nominee Details</a>
+							<div class="form-group row mb-4 mt-3">
+								<div class="col-sm-6">
+									<label>Nominee Name</label>
+									<input class="form-control" />
+								</div>
+								<div class="col-sm-6">
+									<label>Relation</label>
+									<input class="form-control" />
+								</div>
+							</div>
+							<hr />
+							<a href="javascript:void(0)" class="font-weight-bold">Plot Details</a>
+							<div class="form-group row mb-4 mt-3">
+								<div class="col-sm-4">
+									<label>Property Name</label>
+									<select class="form-control">
+										<option>Select</option>
+										<option value="Lucknow">Lucknow</option>
+									</select>
+								</div>
+								<div class="col-sm-4">
+									<label>Block</label>
+									<select class="form-control">
+										<option>Select</option>
+										<option value="2">SECTOR-A</option>
+										<option value="3">SECTOR-B</option>
+										<option value="4">SECTOR-C</option>
+										<option value="5">SECTOR-D</option>
+										<option value="6">SECTOR-B 1</option>
+									</select>
+								</div>
+								<div class="col-sm-4">
+									<label>Plot No.</label>
+									<select class="form-control">
+										<option>Select</option>
+										<option value="2">SECTOR-A-1</option>
+										<option value="3">SECTOR-B-2</option>
+										<option value="4">SECTOR-C-3</option>
+										<option value="5">SECTOR-D-4</option>
+										<option value="6">SECTOR-B-1</option>
+									</select>
+								</div>
+							</div>
+							<hr />
+							<div class="form-group row mt-4 mb-3">
+
+								<div class="col-sm-4">
+									<label>Plot No.</label>
+									<input class="form-control" readonly />
+								</div>
+								<div class="col-sm-4">
+									<label>Development Charge</label>
+									<input class="form-control" />
+								</div>
+								<div class="col-sm-4">
+									<label>Development Rate(Per Sq. Ft.)</label>
+									<input class="form-control" />
+								</div>
+								<div class="col-sm-6">
+									<label>Plot Rate</label>
+									<input class="form-control" />
+								</div>
+								<div class="col-sm-6">
+									<label>Plot Area</label>
+									<input class="form-control" readonly />
+								</div>
+								<div class="col-sm-4">
+									<label>Plot Cost</label>
+									<input class="form-control" />
+								</div>
+								<div class="col-sm-4">
+									<label>PLC Amount</label>
+									<input class="form-control" readonly />
+								</div>
+								<div class="col-sm-4">
+									<label>Remark</label>
+									<input class="form-control" />
+								</div>
+								<div class="col-sm-4">
+									<label>Other Charges</label>
+									<input class="form-control" />
+								</div>
+								<div class="col-sm-4">
+									<label>Final Payable</label>
+									<input class="form-control" readonly />
+								</div>
+								<div class="col-sm-4">
+									<label>Luckey Draw Coupon Discount( ₹ )</label>
+									<input class="form-control" />
+								</div>
+								<div class="col-sm-4">
+									<label>Date</label>
+									<input type="date" class="form-control" />
+								</div>
+								<div class="col-sm-4">
+									<label>Agent Id</label>
+									<input class="form-control" readonly />
+								</div>
+								<div class="col-sm-4">
+									<label>Total Plot Cost( ₹ )</label>
+									<input class="form-control" />
+								</div>
+							</div>
+							<hr />
+							<div class="form-group row mt-4 mb-3">
+								<div class="col-sm-4">
+									<label>Plan Type</label>
+									<select name="plantype" id="plantype" class="form-control" onchange="_plantype(this)">
+										<option>Select</option>
+										<option value="Full Payment">Full Payment</option>
+										<option value="EMI Plan">EMI Plan</option>
+									</select>
+								</div>
+								<div class="col-sm-4"></div>
+								<div class="col-sm-4"></div>
+							</div>
+							<hr />
+							<div class="form-group row mt-4" id="fullPayment">
+								<div class="col-sm-4">
+									<label>Booking Amount</label>
+									<input class="form-control" />
+								</div>
+								<div class="col-sm-4">
+									<label>Due Amount</label>
+									<input class="form-control" readonly />
+								</div>
+								<div class="col-sm-4">
+									<label>Booking Amount</label>
+									<select name="paymode" id="paymode" class="form-control" onchange="_payMode(this)">
+										<option value="Cash">Cash</option>
+										<option value="Cheque">Cheque</option>
+										<option value="DD">DD</option>
+										<option value="NEFT/RTGS">NEFT/RTGS</option>
+										<option value="CARD">CARD</option>
+										<option value="Cash Credit in A/C">Cash Credit in A/C</option>
+									</select>
+								</div>
+								<div class="col-sm-12">
+									<hr />
+								</div>
+							</div>
+							<div class="form-group row mt-4" id="emiPayment">
+								<div class="col-sm-6">
+									<label>Booking Amount</label>
+									<input class="form-control" />
+								</div>
+								<div class="col-sm-6">
+									<label>After Booking Total Payable Amount</label>
+									<input class="form-control" readonly />
+								</div>
+								<div class="col-sm-4">
+									<label>No. of Months</label>
+									<input class="form-control" />
+								</div>
+								<div class="col-sm-4">
+									<label>Installment Amount</label>
+									<input class="form-control" readonly />
+								</div>
+								<div class="col-sm-4">
+									<input type="checkbox" class="mt-4" />
+									Please check if you want to add remaining booking amount in installments
+								</div>
+								<div class="col-sm-4">
+									<label>Remark</label>
+									<input class="form-control" />
+								</div>
+								<div class="col-sm-4">
+									<label>Pay Mode</label>
+									<select name="Emipaymode" id="Emipaymode" class="form-control" onchange="_payMode(this)">
+										<option value="Cash">Cash</option>
+										<option value="Cheque">Cheque</option>
+										<option value="DD">DD</option>
+										<option value="NEFT/RTGS">NEFT/RTGS</option>
+										<option value="CARD">CARD</option>
+										<option value="Cash Credit in A/C">Cash Credit in A/C</option>
+									</select>
+								</div>
+								<div class="col-sm-12">
+									<hr />
+								</div>
+							</div>
+							<div class="form-group row mt-4" id="_paymodeBank">
+								<div class="col-sm-6">
+									<label>A/C Number</label>
+									<input class="form-control" />
+								</div>
+								<div class="col-sm-6">
+									<label>Cheque/DD/NEFT No.</label>
+									<input class="form-control" />
+								</div>
+								<div class="col-sm-4">
+									<label>Bank Name</label>
+									<input class="form-control" />
+								</div>
+								<div class="col-sm-4">
+									<label>Branch Name</label>
+									<input class="form-control" />
+								</div>
+								<div class="col-sm-4">
+									<label>Cheque Date</label>
+									<input class="form-control" />
+								</div>
+							</div>
+							<div class="form-group row mt-4" id="_paymodeCard">
+								<div class="col-sm-4">
+									<label>card Number</label>
+									<input class="form-control" />
+								</div>
+							</div>
+							<hr />
+							<div class="col-sm-4">
+								<input type="button" class="btn btn-outline-info btn-block" value="Book Plot" />
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+

@@ -1,0 +1,121 @@
+﻿
+@{
+    ViewBag.Title = "SMPPayment_collaction";
+    Layout = "~/Views/Shared/AdminLayoutPage.cshtml";
+}
+
+<div class="container">
+    <div class="card border-0 shadow-lg mb-4">
+        <div class="card-header bg-primary pl-3 pb-0">
+            <h5 class="h5 text-white font-weight-bold mb-4">SMPPayment_collaction</h5>
+        </div>
+        <div class="card-body p-0">
+            <div class="row">
+
+                <div class="col-lg-9">
+                    <div class="p-3">
+                        <form>
+                            <div class="form-group row">
+                                <div class="col-sm-6">
+                                    <label>Project Name</label>
+
+                                    <select class="form-control">
+                                        <option value="Left">--Select Project Name--</option>
+                                        <option value="Left">Site 1</option>
+
+                                    </select>
+                                </div>
+                                <div class="col-sm-6">
+                                    <label>
+                                        Block No
+                                    </label>
+                                    <select class="form-control">
+                                        <option value="Left">--Select Block--</option>
+                                        <option value="Left">SECTOR-B</option>
+                                        <option value="Right">SECTOR-E</option>
+                                    </select>
+                                </div>
+                                <div class="col-sm-6">
+                                    <label>Plot No  </label>
+                                    <select class="form-control">
+                                        <option value="Left">--Select Plot No--</option>
+                                        <option value="Left">SECTOR-B-105</option>
+                                        <option value="Right">SECTOR-A-15</option>
+                                        <option value="Right">SECTOR-D-25</option>
+                                    </select>
+                                </div>
+                                <div class="col-sm-6">
+                                    <label>Booking ID</label>
+                                    <input type="text" class="form-control" readonly />
+                                </div>
+                                <div class="col-sm-6">
+                                    <label>Customer ID</label>
+                                    <input type="text" class="form-control" readonly />
+                                </div>
+                                <div class="col-sm-6">
+                                    <label>
+                                        Customer Name
+                                    </label>
+                                    <input type="text" class="form-control" readonly />
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <label>
+                                        Date
+                                    </label>
+                                    <input type="date" class="form-control" readonly />
+                                </div>
+                                <div class="col-sm-6">
+                                    <label>Payment Type</label>
+                                    <select class="form-control">
+                                        <option value="Left">--Select Payment Type-- </option>
+                                        <option value="Left">Installment Amount</option>
+
+                                    </select>
+                                </div>
+                                <div class="col-sm-6">
+                                    <label>Payable Amount</label>
+                                    <input type="text" readonly class="form-control" />
+                                </div>
+
+
+
+
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-6">
+                                    <label>Payable Amount</label>
+                                    <input type="text" readonly class="form-control" />
+                                </div>
+                                <div class="col-sm-6">
+                                    <label>Pay Mode</label>
+                                    <select class="form-control">
+                                        <option value="Left">--Select Pay Mode--</option>
+                                        <option value="Left">Cash</option>
+                                        <option value="Right">Banking</option>
+                                        <option value="Right">Right</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-sm-4"></div>
+
+                        <div class="col-sm-4">
+                            <input type="submit" value="Submit" class="btn btn-primary btn-block" id="btn_addAgent" style="text-align:center" />
+                        </div>
+                        <div class="col-sm-4"></div>
+                    </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-lg-3 d-none d-lg-block">
+
+            </div>
+        </div>
+
+    </div>
+</div>
+

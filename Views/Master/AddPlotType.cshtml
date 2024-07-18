@@ -1,0 +1,124 @@
+﻿@model RealEstate.Models.PlotTypeMaster
+@{
+	ViewBag.Title = "Add Plot Type";
+	Layout = "~/Views/Shared/AdminLayoutPage.cshtml";
+}
+@using System.Data;
+
+<div class="container">
+	<div class="card border-0 shadow-lg mb-4">
+		<div class="card-header bg-primary pl-3 pb-0">
+			<h5 class="h5 text-white font-weight-bold mb-4">ADD PLOT TYPE</h5>
+		</div>
+		<div class="card-body p-0">
+			<div class="row">
+				<div class="col-lg-1 d-none d-lg-block"></div>
+				<div class="col-lg-10">
+					<div class="p-3">
+						<form method="post">
+
+							<div class="form-group row">
+                                <div class="col-sm-6">
+                                    @Html.LabelFor(m => m.PlotType)
+                                    @Html.TextBoxFor(m => m.PlotType, new { @type = "text", @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.PlotType, "", new { @class = "text-danger" })
+									@Html.HiddenFor(m => m.Id)
+                                </div>
+								<div class="col-sm-6 pb-5">
+									<input type="submit" value="ADD" class="btn btn-primary btn-block mt-4" id="btnAddPlotType" />
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+				<div class="col-lg-1 d-none d-lg-block"></div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div class="card shadow mb-4">
+	<div class="card-header py-3">
+		<h5 class="m-0 font-weight-bold text-primary">Plot Type Details</h5>
+	</div>
+	<div class="card-body">
+		<div class="table-responsive">
+			<div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
+				<div class="row">
+					<div class="col-sm-12">
+						<table class="table table-bordered dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
+							<thead>
+								<tr role="row">
+									<th>Sr. No.</th>
+									<th>Plot Type</th>
+									<th>Date</th>
+									<th>Action</th>
+								</tr>
+							</thead>
+                            <tbody>
+                                @{
+                                    int i = 0;
+                                 
+                                    if (Model._dt != null && Model._dt.Rows.Count > 0)
+                                    {
+                                        foreach (DataRow dr in Model._dt.Rows)
+                                        {
+                                            i++;
+                                            
+                                            <tr>
+                                                <td>@i</td>
+                                                <td>@dr["PlotType"]</td>
+                                                <td>@dr["createdate"]</td>
+                                                <td>
+                                                    <a href="javascript:void(0)" class="btn btn-sm text-primary" onclick="_update('@dr["Id"]')"><i class="fa fa-edit"></i></a>
+                                                    <a href="javascript:void(0)" class="btn btn-sm text-danger" onclick="_delete('@dr["Id"]')"><i class="fa fa-trash"></i></a>
+                                                </td>
+                                            </tr>
+                                        }
+                                    }
+                                }
+                            </tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+	function _update(Id) {
+		var data = { Id: Id };
+		$.post('/Master/updatePlotType', data, function (d) {
+			if (d != '0') {
+				d = eval(d);
+				$.each(d, function (k, v) {
+					$('#PlotType').val(v.PlotType);
+					$('#Id').val(v.Id);
+				});
+				$('#btnAddPlotType').val('');
+				$('#btnAddPlotType').val('UPDATE');
+			}
+
+		});
+	}
+	function _delete(Id) {
+		var data = { Id: Id };
+		var con = confirm('Are you sure you want to delete this information?');
+		if (con) {
+			$.post('/Master/deletePlotType', data, function (d) {
+				if (d != '0') {
+					alert(d);
+					location.reload();
+				}
+				else {
+					alert('Data not delete, Server error occured!');
+				}
+			});
+		}
+
+	}
+</script>
+
+

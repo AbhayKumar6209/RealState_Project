@@ -1,0 +1,56 @@
+﻿@model RealEstate.Models.Login
+@{
+	ViewBag.Title = "Login";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="hero page-inner overlay" style="background-image: url('/HomeAssets/images/hero_bg_3.jpg')">
+	<div class="container">
+		<div class="row justify-content-center align-items-center">
+			<div class="col-lg-9 text-center mt-5">
+				<h1 class="heading aos-init aos-animate" data-aos="fade-up">Login</h1>
+
+				<nav aria-label="breadcrumb" data-aos="fade-up" data-aos-delay="200" class="aos-init aos-animate">
+					<ol class="breadcrumb text-center justify-content-center">
+						<li class="breadcrumb-item"><a href="../">Home</a></li>
+						<li class="breadcrumb-item active text-white-50" aria-current="page">
+							Login
+						</li>
+					</ol>
+				</nav>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="section">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-3"></div>
+			<div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+				<div class="card">
+					<div class="card-header bg-primary">
+						<div class="card-title"><h3 class="h3 text-white">Log In</h3></div>
+					</div>
+					<div class="card-body p-5">
+						@using (Html.BeginForm(FormMethod.Post))
+						{
+							@Html.ValidationSummary(true);
+							@Html.LabelFor(m => m.UserName)
+							@Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
+							@Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })<br />
+
+							@Html.LabelFor(m => m.Password)
+							@Html.TextBoxFor(m => m.Password, new { @type = "password", @class = "form-control" })
+							@Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })<br /><br />
+
+							<input type="submit" class="form-control btn-outline-success h3 border-2" value="LOGIN" />
+						}
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-3"></div>
+		</div>
+	</div>
+</div>
+

@@ -1,0 +1,336 @@
+﻿<!-- /*
+* Template Name: Property
+* Template Author: Untree.co
+* Template URI: https://untree.co/
+* License: https://creativecommons.org/licenses/by/3.0/
+*/ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="author" content="Untree.co" />
+	<link rel="shortcut icon" href="~/HomeAssets/favicon.png" />
+
+	<meta name="description" content="" />
+	<meta name="keywords" content="bootstrap, bootstrap5" />
+
+	<link rel="preconnect" href="~/HomeAssets/https://fonts.googleapis.com" />
+	<link rel="preconnect" href="~/HomeAssets/https://fonts.gstatic.com" crossorigin />
+	<link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&display=swap"
+		  rel="stylesheet" />
+
+	<link rel="stylesheet" href="~/HomeAssets/fonts/icomoon/style.css" />
+	<link rel="stylesheet" href="~/HomeAssets/fonts/flaticon/font/flaticon.css" />
+
+	<link rel="stylesheet" href="~/HomeAssets/css/tiny-slider.css" />
+	<link rel="stylesheet" href="~/HomeAssets/css/aos.css" />
+	<link rel="stylesheet" href="~/HomeAssets/css/style.css" />
+	<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+	<script src="~/Scripts/jquery.validate.js"></script>
+	<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+
+	<title>
+		Property &mdash; Real Estate @*@ViewBag.Tittle*@
+	</title>
+	<style>
+		.square {
+			height: 20px;
+			width: 20px;
+			float: left;
+			padding-left: 5px;
+		}
+	</style>
+</head>
+<body>
+	<div class="site-mobile-menu site-navbar-target">
+		<div class="site-mobile-menu-header">
+			<div class="site-mobile-menu-close">
+				<span class="icofont-close js-menu-toggle"></span>
+			</div>
+		</div>
+		<div class="site-mobile-menu-body"></div>
+	</div>
+
+	<nav class="site-nav">
+		<div class="container">
+			<div class="menu-bg-wrap">
+				<div class="site-navigation">
+					<a href="../" class="logo m-0 float-start">Property</a>
+
+					<ul class="js-clone-nav d-none d-lg-inline-block text-start site-menu float-end">
+						<li class="active"><a href="../">Home</a></li>
+						<li class="has-children" style="display:none">
+							<a href="javascript:void(0)">Properties</a>
+							<ul class="dropdown">
+								<li><a href="javascript:void(0)">Buy Property</a></li>
+								<li><a href="javascript:void(0)">Sell Property</a></li>
+								<li class="has-children d-none">
+									<a href="javascript:void(0)">Dropdown</a>
+									<ul class="dropdown">
+										<li><a href="/home/properties">Properties</a></li>
+										<li><a href="/home/propertydetails">Property Details</a></li>
+									</ul>
+								</li>
+							</ul>
+						</li>
+						<li><a href="/home/projects">Projects</a></li>
+						<li><a href="/home/plotavailability">Plot Avalability</a></li>
+						<li><a href="/home/gallery">Gallery</a></li>
+						<li><a href="#services">Services</a></li>
+						<li><a href="/home/about">About</a></li>
+						<li><a href="/home/contact">Contact Us</a></li>
+						<li>
+							@{
+								if (Session["UserName"] == null)
+								{
+									<a href="/home/login">Login</a>
+								}
+								else
+								{
+									<a href="@Session["URL"].ToString()">Dashboard</a>
+								}
+							}
+						</li>
+					</ul>
+
+					<a href="javascript:void(0)" class="burger light me-auto float-end mt-1 site-menu-toggle js-menu-toggle d-inline-block d-lg-none" data-toggle="collapse" data-target="#main-navbar">
+						<span></span>
+					</a>
+				</div>
+			</div>
+		</div>
+	</nav>
+
+	@RenderBody()
+
+	<div class="site-footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-4">
+					<div class="widget">
+						<h3>Contact</h3>
+						<address>43 Raymouth Rd. Baltemoer, London 3910</address>
+						<ul class="list-unstyled links">
+							<li><a href="javascript:void(0)">+91 9876543210</a></li>
+							<li><a href="javascript:void(0)">+91 9876543210</a></li>
+							<li>
+								<a href="javascript:void(0)">info@mydomain.com</a>
+							</li>
+						</ul>
+					</div>
+					<!-- /.widget -->
+				</div>
+				<!-- /.col-lg-4 -->
+				<div class="col-lg-4">
+					<div class="widget">
+						<h3>Sources</h3>
+						<ul class="list-unstyled float-start links">
+							<li><a href="javascript:void(0)">About us</a></li>
+							<li><a href="javascript:void(0)">Services</a></li>
+							<li><a href="javascript:void(0)">Vision</a></li>
+							<li><a href="javascript:void(0)">Mission</a></li>
+							<li><a href="javascript:void(0)">Terms</a></li>
+							<li><a href="javascript:void(0)">Privacy</a></li>
+						</ul>
+						<ul class="list-unstyled float-start links">
+							<li><a href="javascript:void(0)">Partners</a></li>
+							<li><a href="javascript:void(0)">Business</a></li>
+							<li><a href="javascript:void(0)">Careers</a></li>
+							<li><a href="javascript:void(0)">Blog</a></li>
+							<li><a href="javascript:void(0)">FAQ</a></li>
+							<li><a href="javascript:void(0)">Creative</a></li>
+						</ul>
+					</div>
+					<!-- /.widget -->
+				</div>
+				<!-- /.col-lg-4 -->
+				<div class="col-lg-4">
+					<div class="widget">
+						<h3>Links</h3>
+						<ul class="list-unstyled links">
+							<li><a href="javascript:void(0)">Our Vision</a></li>
+							<li><a href="javascript:void(0)">About us</a></li>
+							<li><a href="javascript:void(0)">Contact us</a></li>
+						</ul>
+
+						<ul class="list-unstyled social">
+							<li>
+								<a href="javascript:void(0)"><span class="icon-instagram"></span></a>
+							</li>
+							<li>
+								<a href="javascript:void(0)"><span class="icon-twitter"></span></a>
+							</li>
+							<li>
+								<a href="javascript:void(0)"><span class="icon-facebook"></span></a>
+							</li>
+							<li>
+								<a href="javascript:void(0)"><span class="icon-linkedin"></span></a>
+							</li>
+							<li>
+								<a href="javascript:void(0)"><span class="icon-pinterest"></span></a>
+							</li>
+							<li>
+								<a href="javascript:void(0)"><span class="icon-dribbble"></span></a>
+							</li>
+						</ul>
+					</div>
+					<!-- /.widget -->
+				</div>
+				<!-- /.col-lg-4 -->
+			</div>
+			<!-- /.row -->
+
+			<div class="row mt-5">
+				<div class="col-12 text-center">
+					
+					<p>
+						Copyright &copy;
+						<script>
+							document.write(new Date().getFullYear());
+						</script>
+						. All Rights Reserved. &mdash; Designed and Developed By
+						<a href="dreamitsolution.org">Dream IT Solution</a>
+					</p>
+				</div>
+			</div>
+		</div>
+		<!-- /.container -->
+	</div>
+	<!-- /.site-footer -->
+	<!-- Preloader -->
+	<!--@*<div class="loader">
+	<div id="overlayer"></div>
+		<div class="spinner-border" role="status">
+			<span class="visually-hidden">Loading...</span>
+		</div>
+	</div>*@-->
+	<!-- Modal Section Start-->
+	<!-- Modal -->
+	<div class="modal fade" id="propEnquire" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="propEnquireLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">Plot Enquiry: <span id="propName" class="text-danger"></span></h5>
+					<button type="button" class="close btn btn-sm" style="font-size: 22px;" onclick="$('#propEnquire').modal('hide');">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<form>
+					<div class="modal-body">
+						<div class="row form-group">
+							<div class="col-md-6 col-sm-6 col-lg-6 col-xl-6">
+								<label class="form-label">Name</label>
+								<input type="text" id="Name" class="form-control" required />
+								<input type="hidden" id="PlotId" />
+							</div>
+							<div class="col-md-6 col-sm-6 col-lg-6 col-xl-6">
+								<label class="form-label">Mobile</label>
+								<input type="text" id="Phone" class="form-control" />
+							</div>
+							<div class="col-md-12 col-sm-12 col-lg-12 col-xl-12">
+								<label class="form-label">Email</label>
+								<input type="email" id="Email" class="form-control" />
+							</div>
+							<div class="col-md-12 col-sm-12 col-lg-12 col-xl-12">
+								<label class="form-label">Message</label>
+								<textarea class="form-control" id="Message"></textarea>
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" onclick="sendEnquiry()" class="btn btn-primary form-control">SUBMIT</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<!-- Modal Section End-->
+
+
+	<script src="~/HomeAssets/js/bootstrap.bundle.min.js"></script>
+	<script src="~/HomeAssets/js/tiny-slider.js"></script>
+	<script src="~/HomeAssets/js/aos.js"></script>
+	<script src="~/HomeAssets/js/navbar.js"></script>
+	<script src="~/HomeAssets/js/counter.js"></script>
+	<script src="~/HomeAssets/js/custom.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+	<script>
+
+
+		function _prop_enquire_modal(Id, propName) {
+			$('#propEnquire').modal('show');
+			$('#propName').html(propName);
+			$('#PlotId').val(Id);
+		}
+
+		function sendEnquiry() {
+			var PlotId = $('#PlotId').val();
+			var Name = $('#Name').val();
+			var Email = $('#Email').val();
+			var Phone = $('#Phone').val();
+			var Message = $('#Message').val();
+
+			if (Name == '' || Name == 'NaN' || Name == null || Name == undefined) {
+				fireModal('Please enter your name!');
+				return false;
+			}
+			if (Phone == '' || Phone == 'NaN' || Phone == null || Phone == undefined) {
+				fireModal('Please enter your phone!');
+				return false;
+			}
+			if (Email == '' || Email == 'NaN' || Email == null || Email == undefined) {
+				fireModal('Please enter your email!');
+				return false;
+			}
+			var dataObj = { PlotId: PlotId, Name: Name, Email: Email, Phone: Phone, Message: Message };
+
+			$.post('/home/_saveEnquiry', dataObj, function (data) {
+				//data = eval(data);
+				if (data != '0') {
+					Swal.fire(
+						'Good Job',
+						data,
+						'success'
+					);
+					$('#propEnquire').modal('hide');
+					clrEnqForm();
+				}
+				else {
+					Swal.fire(
+						'Exception',
+						'Server error occured!',
+						'error'
+					);
+					$('#propEnquire').modal('hide');
+					clrEnqForm();
+				}
+			});
+		}
+
+		function fireModal(title) {
+			Swal.fire({
+				position: 'center',
+				icon: 'info',
+				title: title,
+				showConfirmButton: true,
+				timer: 1500
+			})
+		}
+
+		function clrEnqForm() {
+			$('#PlotId').val('');
+			$('#Name').val('');
+			$('#Email').val('');
+			$('#Phone').val('');
+			$('#Message').val('');
+		}
+
+
+
+	</script>
+
+</body>
+</html>

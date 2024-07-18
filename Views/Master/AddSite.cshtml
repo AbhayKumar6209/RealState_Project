@@ -1,0 +1,223 @@
+﻿@model RealEstate.Models.SiteMaster
+@{
+	ViewBag.Title = "Add Site";
+	Layout = "~/Views/Shared/AdminLayoutPage.cshtml";
+}
+@using System.Data;
+<div class="container">
+	<div class="card border-0 shadow-lg mb-4">
+		<div class="card-header bg-primary pl-3 pb-0">
+			<h5 class="h5 text-white font-weight-bold mb-4">ADD SITE DETAILS</h5>
+		</div>
+		<div class="card-body p-0">
+			<div class="row">
+				<div class="col-lg-1 d-none d-lg-block"></div>
+				<div class="col-lg-10">
+                    <div class="p-3" id="addSiteFrm">
+                        
+                        @using (Html.BeginForm("_addSite", "Master", FormMethod.Post, new { @enctype = "multipart/form-data", @id = "SiteFrm" }))
+                        {
+                            @Html.ValidationSummary(true)
+                            <div class="form-group row">
+                                <div class="col-sm-6">
+                                    @Html.HiddenFor(m => m.Id)
+                                    @Html.LabelFor(m => m.SiteName)
+                                    @Html.TextBoxFor(m => m.SiteName, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.SiteName, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="col-sm-6">
+                                    @Html.LabelFor(m => m.FormarName)
+                                    @Html.TextBoxFor(m => m.FormarName, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.FormarName, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="col-sm-6">
+                                    @Html.LabelFor(m => m.SiteAddress)
+                                    @Html.TextBoxFor(m => m.SiteAddress, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.SiteAddress, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="col-sm-6">
+                                    @Html.LabelFor(m => m.Size)
+                                    @Html.TextBoxFor(m => m.Size, new { @type = "number", @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.Size, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="col-sm-6">
+                                    @Html.LabelFor(m => m.NoofPlot)
+                                    @Html.TextBoxFor(m => m.NoofPlot, new { @type = "number", @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.NoofPlot, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="col-sm-6">
+                                    @Html.LabelFor(m => m.PlotAmt)
+                                    @Html.TextBoxFor(m => m.PlotAmt, new { @type = "number", @class = "form-control", @onkeyup = "calcDueAmt()" })
+                                    @Html.ValidationMessageFor(m => m.PlotAmt, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="col-sm-6">
+                                    @Html.LabelFor(m => m.PaidAmt)
+                                    @Html.TextBoxFor(m => m.PaidAmt, new { @type = "number", @class = "form-control", @onkeyup = "calcDueAmt()" })
+                                    @Html.ValidationMessageFor(m => m.PaidAmt, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="col-sm-6">
+                                    @Html.LabelFor(m => m.DueAmt)
+                                    @Html.TextBoxFor(m => m.DueAmt, new { @type = "number", @class = "form-control", @readonly = "true" })
+                                    @Html.ValidationMessageFor(m => m.DueAmt, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="col-sm-6 d-none">
+                                    @Html.LabelFor(m => m.MapLink)
+                                    @Html.TextBoxFor(m => m.MapLink, new { @type = "number", @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.MapLink, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="col-sm-6">
+                                    @Html.LabelFor(m => m._projectImagesUrl)
+                                    @Html.TextBoxFor(m => m._projectImagesUrl, new { @type = "file", @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m._projectImagesUrl, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="col-sm-12 mt-4">
+                                    <input type="submit" value="ADD SITE" class="btn btn-primary btn-block" id="btn_addSite" />
+                                </div>
+                            </div>
+                        }
+                        
+                    </div>
+				</div>
+				<div class="col-lg-1 d-none d-lg-block"></div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div class="card shadow mb-4">
+	<div class="card-header py-3">
+		<h5 class="m-0 font-weight-bold text-primary">Site Details</h5>
+	</div>
+	<div class="card-body">
+		<div class="table-responsive">
+			<div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
+				<div class="row">
+					<div class="col-sm-12">
+						<table class="table table-bordered dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
+							<thead>
+								<tr role="row">
+									<th>Sr. No.</th>
+									<th>Image</th>
+									<th>Site_Name</th>
+									<th>Farmer_Name</th>
+									<th>Site_Location</th>
+									<th>Size</th>
+									<th>No._of_Plots</th>
+									<th>Actual_Amount</th>
+									<th>Paid_Amount</th>
+									<th>Due_Amount</th>
+									<th>Action</th>
+								</tr>
+							</thead>
+							<tbody>
+								@{
+									int i = 0;
+									string Image = null;
+									if (Model.dt != null && Model.dt.Rows.Count > 0)
+									{
+										foreach (DataRow dr in Model.dt.Rows)
+										{
+											i++;
+											Image = dr["ProjectImagesUrl"].ToString();
+											<tr>
+												<td>@i</td>
+												<td>
+													@if (Image != null && Image != "")
+													{
+														<img class="img-profile rounded-circle" onclick="FullImageView('@Image')" data-toggle="modal" data-target="#fullImageView" style="width: 80px; height: 80px; cursor: pointer;" src="@Image">
+													}
+													else
+													{
+														<img class="img-profile rounded-circle" style="width: 80px; height: 80px;" src="~/AssetsUser/img/user.png">
+													}
+
+												</td>
+												<td>@dr["SiteName"]</td>
+												<td>@dr["FormarName"]</td>
+												<td>@dr["SiteAddress"]</td>
+												<td>@dr["Size"]</td>
+												@*<td>@dr["PanNo"]</td>*@
+												<td>@dr["NoofPlot"]</td>
+												<td>@dr["PlotAmt"]</td>
+												<td>@dr["PaidAmt"]</td>
+												<td>@dr["DueAmt"]</td>
+												<td>
+													<a href="javascript:void(0)" class="btn btn-sm text-primary" onclick="_update('@dr["Id"]')"><i class="fa fa-edit"></i></a>
+													<a href="javascript:void(0)" class="btn btn-sm text-danger" onclick="_delete('@dr["Id"]')"><i class="fa fa-trash"></i></a>
+												</td>
+											</tr>
+										}
+									}
+								}
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<script>
+	$(document).ready(function () {
+		//$('#PlotAmt, #PaidAmt').keyup(function () {
+		//	var PlotAmt = $('#PlotAmt').val();
+		//	var PaidAmt = $('#PaidAmt').val();
+
+		//	if (PlotAmt == null || PlotAmt == '' || PlotAmt == NaN) {
+		//		PlotAmt = 0
+		//	}
+		//	if (PaidAmt == null || PaidAmt == '' || PaidAmt == NaN) {
+		//		PaidAmt = 0
+		//	}
+
+		//	var DueAmt = parseInt(PlotAmt) - parseInt(PaidAmt);
+		//	$('#DueAmt').val(DueAmt);
+
+		//})
+	});
+
+	function calcDueAmt() {
+		var PlotAmt = $('#PlotAmt').val();
+		var PaidAmt = $('#PaidAmt').val();
+
+		if (PlotAmt == null || PlotAmt == '' || PlotAmt == NaN) {
+			PlotAmt = 0
+		}
+		if (PaidAmt == null || PaidAmt == '' || PaidAmt == NaN) {
+			PaidAmt = 0
+		}
+
+		var DueAmt = parseFloat(PlotAmt) - parseFloat(PaidAmt);
+		$('#DueAmt').val(DueAmt.toFixed(2));
+	}
+
+	function _update(Id) {
+		var data = { Id: Id };
+		$.post('/Master/AddSite', data, function (d) {
+			$('#addSiteFrm').html($(d).find('#SiteFrm'));
+			$('#btn_addSite').val('');
+			$('#btn_addSite').val('UPDATE');
+		});
+	}
+	function _delete(Id) {
+		var data = { Id: Id };
+		var con = confirm('Are you sure you want to delete this information?');
+		if (con) {
+			$.post('/Master/deleteSite', data, function (d) {
+				if (d != '0') {
+					alert(d);
+					location.reload();
+				}
+				else {
+					alert('Data not delete, Server error occured!');
+				}
+			});
+		}
+
+	}
+
+</script>
+

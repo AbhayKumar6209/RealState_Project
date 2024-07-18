@@ -1,0 +1,106 @@
+﻿
+@{
+	ViewBag.Title = "Plot Transfer";
+	Layout = "~/Views/Shared/AdminLayoutPage.cshtml";
+}
+
+
+
+
+<form>
+	<div class="form-group row">
+		<div class="col-sm-4">
+			<label>Booking Id</label>
+			<input class="form-control" id="bookingId" />
+		</div>
+	</div>
+</form>
+
+
+
+
+
+<div class="card shadow mb-4" id="plotTransferDiv">
+	<div class="card-header py-3">
+		<h5 class="m-0 font-weight-bold text-primary">Plot Transfer</h5>
+	</div>
+	<div class="card-body">
+		<div class="table-responsive">
+			<div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
+				<div class="row">
+					<div class="col-sm-12">
+						<table class="table table-bordered dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
+							<thead>
+								<tr role="row">
+									<th>Select Data</th>
+									<th>Booking Id</th>
+									<th>Customer Id</th>
+									<th>Customer Name</th>
+									<th>Project Name</th>
+									<th>Block No</th>
+									<th>Plot No</th>
+									<th>Plot Area</th>
+									<th>Payment Type</th>
+									<th>Paid Amount</th>
+									<th>Pay Date</th>
+									<th>Pay Mode</th>
+									<th>A/C No</th>
+									<th>Payment Status</th>
+									<th>Cheque DD No</th>
+									<th>Bank Branch</th>
+									<th>Reciept No</th>
+									<th>Manual Reciept No</th>
+									<th>Sponsor Id</th>
+									<th>Cheque Date</th>
+									<th>Booking Id</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr style="color:#333333;background-color:#F7F6F3;">
+									<td> <input type="checkbox" /> </td>
+									<td>SDW00002545</td>
+									<td>HAG765</td>
+									<td>ISHTIYAQ AHMAD</td>
+									<td>SECTOR-B-60</td>
+									<td>SECTOR-B</td>
+									<td>1000.00</td>
+									<td>Lucknow</td>
+									<td> <span>Booking Amount</span> </td>
+									<td>11000.00</td>
+									<td>6/9/2021 12:00:00 AM</td>
+									<td>Cash</td>
+									<td></td>
+									<td>Clear</td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td>SDW0016827</td>
+									<td>SDW0016827</td>
+									<td>HAG765</td>
+									<td>1/1/1900 12:00:00 AM</td>
+									<td>
+										<input type="text" class="form-control">
+										<span id="CustomerId_0"></span>
+										<span id="CustomerName_0"></span>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<div class="row mt-xl-5" id="transButtons">
+	<div class="col-sm-6">
+		<input type="button" class="btn btn-outline-info" value="ADD" />
+		<input type="button" class="btn btn-outline-primary" value="SUBMIT" />
+	</div>
+</div>
+
+
+

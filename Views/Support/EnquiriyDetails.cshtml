@@ -1,0 +1,56 @@
+﻿@model RealEstate.Models.PropEnquiry
+@{
+	ViewBag.Title = "Enquiriy Details";
+	Layout = "~/Views/Shared/AdminLayoutPage.cshtml";
+}
+@using System.Data;
+
+
+<div class="card shadow mb-4">
+	<div class="card-header py-3">
+		<h5 class="m-0 font-weight-bold text-primary">Enquiry Details</h5>
+	</div>
+	<div class="card-body">
+		<div class="table-responsive">
+			<div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
+				<div class="row">
+					<div class="col-sm-12">
+						<table class="table table-bordered dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
+							<thead>
+								<tr role="row">
+									<th>Sr. No.</th>
+									<th>Name</th>
+									<th>Mobile No</th>
+									<th>Email</th>
+									<th>Plot_Name</th>
+									<th>Message</th>
+									<th>Enquiry_Date</th>
+								</tr>
+							</thead>
+							<tbody>
+								@if (Model.dt != null)
+								{
+									int i = 0;
+									foreach (DataRow dr in Model.dt.Rows)
+									{
+										i++;
+										<tr role="row">
+											<td>@i</td>
+											<td>@dr["Name"]</td>
+											<td>@dr["Phone"]</td>
+											<td>@dr["Email"]</td>
+											<td>@dr["PlotName"]</td>
+											<td>@dr["Message"]</td>
+											<td>@dr["EntryDate"]</td>
+										</tr>
+									}
+								}
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+

@@ -1,0 +1,324 @@
+﻿@model RealEstate.Models.PlotMaster
+@{
+	ViewBag.Title = "Add Plot";
+	Layout = "~/Views/Shared/AdminLayoutPage.cshtml";
+}
+@using System.Data;
+
+<div class="container">
+	<div class="card border-0 shadow-lg mb-4">
+		<div class="card-header bg-primary pl-3 pb-0">
+			<h5 class="h5 text-white font-weight-bold mb-4">ADD PLOT DETAILS</h5>
+		</div>
+		<div class="card-body p-0">
+			<div class="row">
+				<div class="col-lg-1 d-none d-lg-block"></div>
+				<div class="col-lg-10">
+					<div class="p-3" id="addPlotfDiv">
+						@using (Html.BeginForm("_addPlot", "Master", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+						{
+							Html.ValidationSummary(true);
+
+							<div class="form-group row">
+								<div class="col-sm-6">
+									@Html.HiddenFor(m => m.Id)
+									@Html.LabelFor(m => m.SiteName)
+									@Html.DropDownListFor(m => m.SiteName, (List<SelectListItem>)ViewBag.SiteNames, new { @class = "form-control", @onchange = "GetSiteDetails()" })
+									@Html.ValidationMessageFor(m => m.SiteName, "", new { @class = "text-danger" })
+								</div>
+								<div class="col-sm-6">
+									@Html.LabelFor(m => m.SiteLocation)
+									@Html.TextBoxFor(m => m.SiteLocation, new { @class = "form-control", @readonly = true })
+								</div>
+								<div class="col-sm-6">
+									@Html.LabelFor(m => m.NoOfPlot)
+									@Html.TextBoxFor(m => m.NoOfPlot, new { @class = "form-control", @readonly = true })
+								</div>
+								<div class="col-sm-6">
+									@Html.LabelFor(m => m.BlockName)
+									<select id="BlockName" name="BlockName" class="form-control"></select>
+									@Html.ValidationMessageFor(m => m.BlockName, "", new { @class = "text-danger" })
+								</div>
+								<div class="col-sm-6">
+									@Html.LabelFor(m => m.PlotType)
+									@Html.DropDownListFor(m => m.PlotType, (List<SelectListItem>)ViewBag.PlotTypes, new { @class = "form-control" })
+									@Html.ValidationMessageFor(m => m.PlotType, "", new { @class = "text-danger" })
+								</div>
+								<div class="col-sm-6">
+									@Html.LabelFor(m => m.PlotNumber)
+									@Html.TextBoxFor(m => m.PlotNumber, new { @type = "number", @class = "form-control" })
+									@Html.ValidationMessageFor(m => m.PlotNumber, "", new { @class = "text-danger" })
+								</div>
+								<div class="col-sm-6">
+									@Html.LabelFor(m => m.PlotRate)
+									@Html.TextBoxFor(m => m.PlotRate, new { @class = "form-control" })
+									@Html.ValidationMessageFor(m => m.PlotRate, "", new { @class = "text-danger" })
+								</div>
+								<div class="col-sm-6">
+									@Html.LabelFor(m => m.PlotArea)
+									@Html.TextBoxFor(m => m.PlotArea, new { @class = "form-control" })
+									@Html.ValidationMessageFor(m => m.PlotArea, "", new { @class = "text-danger" })
+								</div>
+								<div class="col-sm-6">
+									@Html.LabelFor(m => m._plotImage)
+									@Html.TextBoxFor(m => m._plotImage, new { @type = "file", @class = "form-control" })
+									@Html.ValidationMessageFor(m => m._plotImage, "", new { @class = "text-danger" })
+								</div>
+								<div class="col-sm-6">
+									@Html.LabelFor(m => m.PlotStatus)
+									@Html.DropDownListFor(m => m.PlotStatus, new List<SelectListItem>{
+								   new SelectListItem{ Text = "--select--"},
+								   new SelectListItem{ Text = "Available", Value="Available"},
+								   new SelectListItem{ Text = "Booked", Value="Booked"}
+									}, new { @class = "form-control" })
+									@Html.ValidationMessageFor(m => m.PlotStatus, "", new { @class = "text-danger" })
+								</div>
+							</div>
+							<div class="form-group row">
+								<div class="col-sm-12">
+									<input type="submit" value="ADD PLOT" class="btn btn-primary btn-block" id="btn_addPlot" />
+								</div>
+							</div>
+
+						}
+						
+					</div>
+				</div>
+				<div class="col-lg-1 d-none d-lg-block"></div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<div class="card shadow mb-4">
+	<div class="card-header py-3">
+		<h5 class="m-0 font-weight-bold text-primary">Plot Details</h5>
+	</div>
+	<div class="card-body">
+		<div class="row mt-3 mb-3">
+			<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+				@Html.LabelFor(m => m.SiteName)
+				@Html.DropDownListFor(m => m.SiteName, (List<SelectListItem>)ViewBag.SiteNames, new { @class = "form-control", @id = "ddlSite", @onchange = "GetBlocks()" })
+			</div>
+			<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+				<label>Bock Name</label>
+				<select id="ddlBlock" class="form-control"></select>
+			</div>
+			<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+				@Html.LabelFor(m => m.PlotType)
+				@Html.DropDownListFor(m => m.PlotType, (List<SelectListItem>)ViewBag.PlotTypes, new { @id = "ddlPlotType", @class = "form-control" })
+			</div>
+			<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 pt-2">
+				<input type="button" class="btn btn-info mt-4" value="Search" id="PlotSearch" />
+			</div>
+		</div>
+		<div class="table-responsive">
+			<div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
+				<div class="row">
+					<div class="col-sm-12" id="dvPlotDetails">
+						<table class="table table-bordered dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
+							<thead>
+								<tr role="row">
+									<th>Sr. No.</th>
+									<th>Plot_Image</th>
+									<th>Site_Name</th>
+									<th>Location</th>
+									<th>No_of_Plots</th>
+									<th>Block</th>
+									<th>Plot_Type</th>
+									<th>Plot_No</th>
+									<th>Status</th>
+									<th>Plot_Rate</th>
+									<th>Plot_Area</th>
+									<th>Action</th>
+								</tr>
+							</thead>
+							<tbody>
+								@{
+									int i = 0;
+									string Image = null;
+									if (Model.dt != null && Model.dt.Rows.Count > 0)
+									{
+										foreach (DataRow dr in Model.dt.Rows)
+										{
+											i++;
+											Image = dr["PlotImage"].ToString();
+											<tr>
+												<td>@i</td>
+												<td><img src="@Image" class="img-fluid" style="height: 120px; width: 120px" /></td>
+												<td>@dr["SiteName"]</td>
+												<td>@dr["Location"]</td>
+												<td>@dr["NoofPlot"]</td>
+												<td>@dr["BlockName"]</td>
+												<td>@dr["PlotType"]</td>
+												<td>@dr["PlotNo"]</td>
+												<td>@dr["PlotStatus"]</td>
+												<td>@dr["PlotRate"]</td>
+												<td>@dr["PlotArea"]</td>
+												<td align="center">
+													<a href="javascript:void(0)" class="btn btn-sm text-primary" onclick="_update('@dr["Id"]')"><i class="fa fa-edit"></i></a>
+													<a href="javascript:void(0)" class="btn btn-sm text-danger" onclick="_delete('@dr["Id"]')"><i class="fa fa-trash"></i></a>
+												</td>
+											</tr>
+										}
+									}
+								}
+
+
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<script>
+	function _update(Id) {
+		var data = { Id: Id };
+		$.post('/Master/updatePlot', data, function (d) {
+			if (d != '0') {
+				d = eval(d);
+				$.each(d, function (k, v) {
+					$('#SiteName').val(v.SiteId);
+					$('#Id').val(v.Id);
+					$('#BlockName').val(v.BlockId);
+					$('#SiteLocation').val(v.Location);
+					$('#NoOfPlot').val(v.NoofPlot);
+					$('#PlotType').val(v.PlotTypeId);
+					$('#PlotType').val(v.PlotTypeId);
+					$('#PlotNumber').val(v.PlotNumber);
+					$('#PlotRate').val(parseFloat(v.PlotRate).toFixed(2));
+					$('#PlotArea').val(parseFloat(v.PlotArea).toFixed(2));
+					$('#PlotStatus').val(v.PlotStatus);
+
+					BindBlocks(v.SiteId, v.BlockId)
+				});
+				$('#btn_addPlot').val('');
+				$('#btn_addPlot').val('UPDATE');
+			}
+
+		});
+	}
+	function _delete(Id) {
+		var data = { Id: Id };
+		var con = confirm('Are you sure you want to delete this information?');
+		if (con) {
+			$.post('/Master/deletePlot', data, function (d) {
+				if (d != '0') {
+					alert(d);
+					location.reload();
+				}
+				else {
+					alert('Data not delete, Server error occured!');
+				}
+			});
+		}
+
+	}
+
+	function GetSiteDetails(Sid) {
+		var Id = $('#SiteName').val();
+		var data = { Id: Id };
+		$.post('/Master/BindSiteDetails', data, function (d) {
+			if (d != '0') {
+				d = eval(d);
+				$.each(d, function (k, v) {
+					$('#SiteLocation').val(v.Location);
+					$('#NoOfPlot').val(v.NoofPlot);
+					if (Sid != null && Sid != '' && Sid != 'NaN') {
+						$('#SiteName').val(v.SiteId);
+					}
+					BindBlocks();
+				});
+			}
+		});
+	}
+
+	function BindBlocks(Sid, Bid) {
+		var data = '', Id = $('#SiteName').val();
+		if (Sid != null && Sid != '' && Sid != 'NaN') {
+			data = { ProjectId: Sid };
+		}
+		else {
+			data = { ProjectId: Id };
+		}
+		$.post('/Master/BindBlock_Site', data, function (d) {
+			if (d != '0') {
+				d = eval(d);
+				$('#BlockName').html('');
+				$('#BlockName').append('<option>--select--</option>');
+				$.each(d, function (k, v) {
+					$('#BlockName').append('<option value="' + v.Id + '">' + v.BlockName + '</option>');
+					if (v.Id == Bid) {
+						$('#BlockName').val(v.Id);
+					}
+				});
+			}
+			else {
+				$('#BlockName').html('');
+				$('#BlockName').append('<option>--none--</option>');
+			}
+		});
+	}
+
+	function GetBlocks() {
+		var data = data = { ProjectId: $('#ddlSite').val() };
+		$.post('/Master/BindBlock_Site', data, function (d) {
+			if (d != '0') {
+				d = eval(d);
+				$('#ddlBlock').html('');
+				$('#ddlBlock').append('<option value="0">--select--</option>');
+				$.each(d, function (k, v) {
+					$('#ddlBlock').append('<option value="' + v.Id + '">' + v.BlockName + '</option>');
+				});
+			}
+			else {
+				$('#ddlBlock').html('');
+				$('#ddlBlock').append('<option value="0">--none--</option>');
+			}
+		});
+	}
+
+	$(document).ready(function () {
+		$('#PlotSearch').click(function () {
+			var SId = $('#ddlSite').val(), BId = $('#ddlBlock').val(), PType = $('#ddlPlotType').val();
+			var SiteName = '', BlockName = '', PlotType = '';
+
+			if (SId != null && SId != '' && SId != 'NaN') {
+				SiteName = SId;
+			}
+			else {
+				SiteName = null;
+			}
+
+			if (BId != null && BId != '0' && BId != 'NaN') {
+				BlockName = BId;
+			}
+			else {
+				BlockName = null;
+			}
+
+			if (PType != null && PType != '' && PType != 'NaN') {
+				PlotType = PType;
+			}
+			else {
+				PlotType = null;
+			}
+
+			var data = { SiteName: SiteName, BlockName: BlockName, PlotType: PlotType };
+
+			$.post('/Master/AddPlot', data, function (d) {
+				$('#dvPlotDetails').html($(d).find('table'));
+			});
+		});
+	});
+
+</script>
+
+
+

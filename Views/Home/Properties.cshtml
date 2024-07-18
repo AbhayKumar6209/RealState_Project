@@ -1,0 +1,116 @@
+﻿@model RealEstate.Models.PlotMaster
+@{
+	ViewBag.Title = "| Properties";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using System.Data;
+
+<div class="hero page-inner overlay" style="background-image: url('/HomeAssets/images/hero_bg_1.jpg')">
+	<div class="container">
+		<div class="row justify-content-center align-items-center">
+			<div class="col-lg-9 text-center mt-5">
+				<h1 class="heading aos-init aos-animate" data-aos="fade-up">Properties</h1>
+
+				<nav aria-label="breadcrumb" data-aos="fade-up" data-aos-delay="200" class="aos-init aos-animate">
+					<ol class="breadcrumb text-center justify-content-center">
+						<li class="breadcrumb-item"><a href="../">Home</a></li>
+						<li class="breadcrumb-item active text-white-50" aria-current="page">
+							Properties
+						</li>
+					</ol>
+				</nav>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="section section-properties">
+	<div class="container">
+		<div class="row">
+			@{
+				int i = 0;
+				string Image = null;
+				if (Model.dt != null && Model.dt.Rows.Count > 0)
+				{
+					foreach (DataRow dr in Model.dt.Rows)
+					{
+						i++;
+						Image = dr["PlotImage"].ToString();
+						<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+							<div class="property-item mb-30">
+								<a href="/home/propertydetails?PlotId=@dr["Id"]" class="img">
+									<img src="@Image" style="height: 416px; width: 416px;" alt="Image" class="img-fluid">
+								</a>
+
+								<div class="property-content">
+									<div class="price mb-2">
+										<span>@dr["PlotName"]</span>
+									</div>
+									<div>
+										<span class="d-block mb-2 text-black-50">@dr["Location"]</span>
+										<span class="city d-block mb-3"><i class="icon-rupee"></i> @dr["PlotCost"]</span>
+
+										<div class="specs d-flex mb-4">
+											<span class="d-block d-flex align-items-center me-3">
+												<!--<span class="icon-bed me-2"></span>-->
+												<span class="caption"><i class="icon-rupee"></i> @dr["PlotRate"]/ft<sup>2</sup></span>
+											</span>
+											<span class="d-block d-flex align-items-center">
+												<span class="caption"><i class="icon-area-chart"></i> @dr["PlotArea"] ft<sup>2</sup></span>
+											</span>
+										</div>
+										<a href="javascript:void(0)" onclick="_prop_enquire_modal('@dr["Id"]','@dr["PlotName"])" class="btn btn-primary py-2 px-3">Enquiry Now</a>
+										<a href="/home/propertydetails?PlotId=@dr["Id"]" class="btn btn-info py-2 px-3">See Details</a>
+									</div>
+								</div>
+							</div>
+							<!-- .item -->
+						</div>
+					}
+				}
+			}
+			<!--@*<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+				<div class="property-item mb-30">
+					<a href="/home/propertydetails" class="img">
+						<img src="~/HomeAssets/images/img_1.jpg" alt="Image" class="img-fluid">
+					</a>
+
+					<div class="property-content">
+						<div class="price mb-2"><span>$1,291,000</span></div>
+						<div>
+							<span class="d-block mb-2 text-black-50">5232 California Fake, Ave. 21BC</span>
+							<span class="city d-block mb-3">California, USA</span>
+
+							<div class="specs d-flex mb-4">
+								<span class="d-block d-flex align-items-center me-3">
+									<span class="icon-bed me-2"></span>
+									<span class="caption">2 beds</span>
+								</span>
+								<span class="d-block d-flex align-items-center">
+									<span class="icon-bath me-2"></span>
+									<span class="caption">2 baths</span>
+								</span>
+							</div>
+
+							<a href="/home/propertydetails" class="btn btn-primary py-2 px-3">See details</a>
+						</div>
+					</div>
+				</div>
+			</div>*@-->
+
+		</div>
+		<!--@*<div class="row align-items-center py-5">
+			<div class="col-lg-3">Pagination (1 of 10)</div>
+			<div class="col-lg-6 text-center">
+				<div class="custom-pagination">
+					<a href="#">1</a>
+					<a href="#" class="active">2</a>
+					<a href="#">3</a>
+					<a href="#">4</a>
+					<a href="#">5</a>
+				</div>
+			</div>
+		</div>*@-->
+	</div>
+</div>
+

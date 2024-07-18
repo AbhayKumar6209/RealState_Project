@@ -1,0 +1,843 @@
+﻿
+@{
+    ViewBag.Title = "Tree View";
+    Layout = "~/Views/Shared/AdminLayoutPage.cshtml";
+}
+
+<div class="">
+	<div class="row">
+
+
+
+		<div class="col-md-12">
+			<div class="box box-orange">
+				<div class="box-content">
+					<div class="row form-group mtbr">
+
+
+						<div class="col-md-12 col-xs-12">
+							<div class="pull-left">
+								&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+
+							</div>
+							<div class="pull-right">
+
+							</div>
+						</div>
+
+
+						<div class="col-md-6">
+							<div class="text-left">Member ID: </div>
+
+
+							<input name="ctl00$ContentPlaceHolder1$txtgo" type="text" id="ContentPlaceHolder1_txtgo" class="fm1 form-control">
+
+
+							<input type="submit" name="ctl00$ContentPlaceHolder1$btngo" value="Show" id="ContentPlaceHolder1_btngo" class="fm2 btn btn-success">
+
+							<input type="submit" name="ctl00$ContentPlaceHolder1$btnUP" value="UP" id="ContentPlaceHolder1_btnUP" class="fm2 btn btn-success">
+						</div>
+						<div class="col-md-6">
+
+							<table border="1" class="table table-bordered table-responsive res1  treeres">
+								<tbody>
+									<tr>
+										<td style="width: 70px; font-size: 15px"><b>Total:</b> </td>
+										<td style="width: 70px; font-size: 15px">
+											Left &nbsp;<span id="ContentPlaceHolder1_lbltotalleft">75</span>
+										</td>
+										<td style="width: 70px; font-size: 15px">
+											Right &nbsp;<span id="ContentPlaceHolder1_lbltotalright">0</span>
+										</td>
+									</tr>
+									<tr>
+										<td style="width: 70px; font-size: 15px"><b>Status:</b> </td>
+										<td style="width: 70px; font-size: 15px">
+											Active &nbsp;<span id="ContentPlaceHolder1_lblActive">32</span>
+										</td>
+										<td style="width: 70px; font-size: 15px">
+											Inactive
+											<span id="ContentPlaceHolder1_lblInactive">43</span>
+										</td>
+									</tr>
+
+								</tbody>
+								<caption>
+									&nbsp; &nbsp;
+								</caption>
+							</table>
+
+						</div>
+					</div>
+
+					<table>
+						<tbody>
+							<tr>
+
+								<td align="left"></td>
+							</tr>
+							<tr>
+								<td colspan="2">
+									<table align="center" style="border: none;" cellpadding="0" cellspacing="0" class=" tv1">
+										<tbody>
+											<tr>
+												<td style="text-align: center">&nbsp;</td>
+												<td style="text-align: center">
+													<input type="image"  class="image-responsive im1" src="/AdminAssets/img/undraw_profile.svg" style="height:60px; width:60px;" />
+													&nbsp;
+												</td>
+												<td style="text-align: center">&nbsp;</td>
+											</tr>
+											<tr>
+												<td style="text-align: center">&nbsp;</td>
+												<td style="text-align: center">
+													<div class="brrq1">
+														&nbsp;<a  class="brrqa" >0999999</a>
+														<br>
+														<span id="ContentPlaceHolder1_lbl1" class="brrqa1">Real Estate</span>
+														<br>
+
+
+													</div>
+												</td>
+												<td style="text-align: center">&nbsp;</td>
+											</tr>
+											<tr class="m1">
+												<td style="text-align: center">&nbsp;</td>
+												<td style="text-align: center">
+													<img class="image-responsive im2 w-50" src="/AdminAssets/img/linkMain.png">
+												</td>
+												<td style="text-align: center">&nbsp;</td>
+											</tr>
+											<tr>
+												<td style="text-align: center">&nbsp;</td>
+												<td style="text-align: center">
+													<table class="style2">
+														<tbody>
+															<tr>
+																<td>
+																	<span class="ml-lg-3 mr-lg-5"></span>
+																</td>
+																<td style="text-align: center" class="pt2">
+																	<input type="image" class="im3" src="/AdminAssets/img/undraw_profile.svg" style="height:60px; width:60px;">
+																	<br>
+																	<a style="text-decoration:underline;">FFA546</a>
+																	<br>
+																	<span style="color:#333333;">SHADAB ALAM ANSARI</span>
+																	<br>
+
+
+																</td>
+																<td>
+																	<span class="ml-lg-5 mr-lg-5"></span>
+																</td>
+																<td style="text-align: center" class="pt2 pl-lg-4">
+																	<input type="image" class="im3 ml-lg-5" src="/AdminAssets/img/undraw_profile.svg" style="height:60px; width:60px;">
+																	<br>
+																	<a>Join Now</a>
+																	<br>
+																	<span style="color:#333333;"></span>
+																	<br>
+
+
+																</td>
+															</tr>
+														</tbody>
+													</table>
+												</td>
+												<td style="text-align: center">&nbsp;</td>
+											</tr>
+										</tbody>
+									</table>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<div id="ContentPlaceHolder1_Panel1" class="PanelCSS" style="border-color: gray; border-width: 1px; border-style: solid; visibility: hidden; position: absolute; left: 464px; top: 208px; display: none;">
+
+
+
+
+						<table id="customers" border="1px" cellpadding="6px" class="table-bordered table-responsive table-striped">
+							<tbody>
+								<tr style="text-align: center;">
+									<td>Member Id</td>
+									<td>Member Name</td>
+									<td>User Name</td>
+									<td>Top Up Amount</td>
+									<td>Package Name</td>
+								</tr>
+								<tr style="text-align: center">
+									<td>
+										<span id="ContentPlaceHolder1_lblid1" style="font-weight:bold;">0999999</span>
+									</td>
+									<td>
+										<span id="ContentPlaceHolder1_lblname1" style="font-weight:bold;">S DREAM WORLD</span>
+									</td>
+									<td>
+										<span id="ContentPlaceHolder1_lblUserID1" style="font-weight:bold;">DEE809</span>
+									</td>
+									<td>
+										<span id="ContentPlaceHolder1_lblTopupAmount1" style="font-weight:bold;">0.00</span>
+									</td>
+									<td>
+										<span id="ContentPlaceHolder1_lblpackageName1" style="font-weight:bold;"></span>
+									</td>
+								</tr>
+								<tr style="text-align: center">
+									<td>Registration Date</td>
+
+									<td>Sponsor User Name</td>
+									<td>Imm. Sponsor User Name</td>
+									<td>Block</td>
+									<td></td>
+								</tr>
+								<tr style="text-align: center">
+									<td>
+										<span id="ContentPlaceHolder1_lbldate1" style="font-weight:bold;">27-Aug-2019</span>
+									</td>
+
+									<td>
+										<span id="ContentPlaceHolder1_lblsponser1" style="font-weight:bold;">888888</span>
+									</td>
+									<td>
+										<span id="ContentPlaceHolder1_lblreferral1" style="font-weight:bold;"></span>
+									</td>
+									<td>
+										<span id="ContentPlaceHolder1_LblBlock" style="font-weight:bold;"></span>
+									</td>
+									<td></td>
+								</tr>
+								<tr>
+									<td class="ts">&nbsp;</td>
+									<td class="ts">Left </td>
+									<td class="ts">Right</td>
+									<td class="ts">Total</td>
+									<td class="ts"></td>
+								</tr>
+
+								<tr>
+									<td class="tss">Team Structure</td>
+									<td class="tss">
+										<span id="ContentPlaceHolder1_lblleft1" style="font-weight:bold;">75</span>
+									</td>
+									<td class="tss">
+										<span id="ContentPlaceHolder1_lblright1" style="font-weight:bold;">0</span>
+									</td>
+									<td class="tss">
+										<span id="ContentPlaceHolder1_lbltotalmem1" style="font-weight:bold;">75</span>
+									</td>
+									<td class="tss">
+									</td>
+								</tr>
+								<tr>
+									<td class="tss">Team Plot Business</td>
+									<td class="tss">
+										<span id="ContentPlaceHolder1_lblSelfBusiness1" style="font-weight:bold;">2369000.00</span>
+									</td>
+									<td class="tss">
+										<span id="ContentPlaceHolder1_lblLeftBusiness1" style="font-weight:bold;">0.00</span>
+									</td>
+									<td class="tss">
+										<span id="ContentPlaceHolder1_lblRightBusiness1" style="font-weight:bold;">2369000.00</span>
+									</td>
+									<td class="tss">
+									</td>
+								</tr>
+
+							</tbody>
+						</table>
+
+
+
+
+					</div>
+
+					<div id="ContentPlaceHolder1_Panel2" class="PanelCSS" style="border-color: gray; border-width: 1px; border-style: solid; display: none; visibility: hidden; position: absolute;">
+
+						<table id="customers" border="1px" cellpadding="6px" class="table-bordered table-responsive table-striped">
+							<tbody>
+								<tr style="text-align: center;">
+									<td>Member Id</td>
+									<td>Member Name</td>
+									<td>User Name </td>
+									<td>Top-UP Amount</td>
+									<td>Package Name</td>
+								</tr>
+								<tr style="text-align: center">
+									<td>
+										<span id="ContentPlaceHolder1_lblid2" style="font-weight:bold;">FFA546</span>
+									</td>
+									<td>
+										<span id="ContentPlaceHolder1_lblname2" style="font-weight:bold;">SHADAB ALAM ANSARI</span>
+									</td>
+									<td>
+										<span id="ContentPlaceHolder1_lblUserID2" style="font-weight:bold;">FFA546</span>
+									</td>
+									<td>
+										<span id="ContentPlaceHolder1_lblTopupAmount2" style="font-weight:bold;">0.00</span>
+									</td>
+									<td>
+										<span id="ContentPlaceHolder1_lblPackageName2" style="font-weight:bold;"></span>
+									</td>
+								</tr>
+								<tr style="text-align: center">
+									<td>Registration Date</td>
+
+									<td>Sponsor User Name</td>
+									<td>Imm. Sponsor User Name</td>
+									<td>Block</td>
+									<td></td>
+								</tr>
+								<tr style="text-align: center">
+									<td>
+										<span id="ContentPlaceHolder1_lbldate2" style="font-weight:bold;">07-May-2021</span>
+									</td>
+
+									<td>
+										<span id="ContentPlaceHolder1_lblsponser2" style="font-weight:bold;">0999999</span>
+									</td>
+									<td>
+										<span id="ContentPlaceHolder1_lblreferral2" style="font-weight:bold;">0999999</span>
+									</td>
+									<td>
+										<span id="ContentPlaceHolder1_LblBlock2" style="font-weight:bold;"></span>
+									</td>
+									<td></td>
+								</tr>
+								<tr>
+									<td class="ts">&nbsp;</td>
+									<td class="ts">Left</td>
+									<td class="ts">Right</td>
+									<td class="ts">Total</td>
+									<td class="ts"></td>
+								</tr>
+
+								<tr>
+									<td class="tss">Team Structure</td>
+									<td class="tss">
+										<span id="ContentPlaceHolder1_lblleft2" style="font-weight:bold;">74</span>
+									</td>
+									<td class="tss">
+										<span id="ContentPlaceHolder1_lblright2" style="font-weight:bold;">0</span>
+									</td>
+									<td class="tss">
+										<span id="ContentPlaceHolder1_lbltotalmem2" style="font-weight:bold;">74</span>
+									</td>
+									<td class="tss">
+									</td>
+								</tr>
+								<tr>
+									<td class="tss">Team Plot Business</td>
+									<td class="tss">
+										<span id="ContentPlaceHolder1_lblSelfBusiness2" style="font-weight:bold;">2347000.00</span>
+									</td>
+									<td class="tss">
+										<span id="ContentPlaceHolder1_lblLeftBusiness2" style="font-weight:bold;">0.00</span>
+									</td>
+									<td class="tss">
+										<span id="ContentPlaceHolder1_lblRightBusiness2" style="font-weight:bold;">2347000.00</span>
+									</td>
+									<td class="tss">
+									</td>
+								</tr>
+
+							</tbody>
+						</table>
+
+					</div>
+
+					<div id="ContentPlaceHolder1_Panel3" class="PanelCSS" style="border-color: gray; border-width: 1px; border-style: solid; display: none; visibility: hidden; position: absolute;">
+
+						<table id="customers" border="1px" cellpadding="6px" class="table-bordered table-responsive table-striped">
+							<tbody>
+								<tr style="text-align: center;">
+									<td>Member Id</td>
+									<td>Member Name</td>
+									<td>User Name</td>
+									<td>Top-UP Amount</td>
+									<td>Package Name</td>
+								</tr>
+								<tr style="text-align: center">
+									<td>
+										<span id="ContentPlaceHolder1_lblid3" style="font-weight:bold;"></span>
+									</td>
+									<td>
+										<span id="ContentPlaceHolder1_lblname3" style="font-weight:bold;"></span>
+									</td>
+									<td>
+										<span id="ContentPlaceHolder1_lblUserID3" style="font-weight:bold;"></span>
+									</td>
+									<td>
+										<span id="ContentPlaceHolder1_lblTopupAmount3" style="font-weight:bold;"></span>
+									</td>
+									<td>
+										<span id="ContentPlaceHolder1_lblpackagename3" style="font-weight:bold;"></span>
+									</td>
+								</tr>
+								<tr style="text-align: center">
+									<td>Registration Date</td>
+
+									<td>Sponsor User Name</td>
+									<td>Imm. Sponsor User Name</td>
+									<td>Block</td>
+									<td></td>
+								</tr>
+								<tr style="text-align: center">
+									<td>
+										<span id="ContentPlaceHolder1_lbldate3" style="font-weight:bold;"></span>
+									</td>
+
+									<td>
+										<span id="ContentPlaceHolder1_lblsponser3" style="font-weight:bold;"></span>
+									</td>
+									<td>
+										<span id="ContentPlaceHolder1_lblreferral3" style="font-weight:bold;"></span>
+									</td>
+									<td>
+										<span id="ContentPlaceHolder1_LblBlock3" style="font-weight:bold;"></span>
+									</td>
+									<td></td>
+								</tr>
+								<tr class="ts">
+									<td class="ts">&nbsp;</td>
+									<td class="ts">Left</td>
+									<td class="ts">Right</td>
+									<td class="ts">Total</td>
+									<td class="ts"></td>
+								</tr>
+
+								<tr>
+									<td class="tss">Team Structure</td>
+									<td class="tss">
+										<span id="ContentPlaceHolder1_lblleft3" style="font-weight:bold;"></span>
+									</td>
+									<td class="tss">
+										<span id="ContentPlaceHolder1_lblright3" style="font-weight:bold;"></span>
+									</td>
+									<td class="tss">
+										<span id="ContentPlaceHolder1_lbltotalmem3" style="font-weight:bold;"></span>
+									</td>
+									<td class="tss">
+									</td>
+								</tr>
+								<tr>
+									<td class="tss">Team Plot Business</td>
+									<td class="tss">
+										<span id="ContentPlaceHolder1_lblSelfBusiness3" style="font-weight:bold;"></span>
+									</td>
+									<td class="tss">
+										<span id="ContentPlaceHolder1_lblLeftBusiness3" style="font-weight:bold;"></span>
+									</td>
+									<td class="tss">
+										<span id="ContentPlaceHolder1_lblRightBusiness3" style="font-weight:bold;"></span>
+									</td>
+									<td class="tss">
+									</td>
+								</tr>
+
+							</tbody>
+						</table>
+
+					</div>
+
+					<div id="ContentPlaceHolder1_Panel4" class="PanelCSS" style="border-color: gray; border-width: 1px; border-style: solid; display: none; visibility: hidden; position: absolute;">
+
+						<table id="customers" border="1px" cellpadding="6px" class="table-bordered table-responsive table-striped">
+							<tbody>
+								<tr style="text-align: center;">
+									<td>Member Id</td>
+									<td>Member Name</td>
+									<td>User Name</td>
+									<td>Top-UP Amount</td>
+									<td>Package Name</td>
+								</tr>
+								<tr style="text-align: center">
+									<td>
+										<span id="ContentPlaceHolder1_lblid4" style="font-weight:bold;">DGA096</span>
+									</td>
+									<td>
+										<span id="ContentPlaceHolder1_lblname4" style="font-weight:bold;">SHANE ALAM</span>
+									</td>
+									<td>
+										<span id="ContentPlaceHolder1_lblUserID4" style="font-weight:bold;">DGA096</span>
+									</td>
+									<td>
+										<span id="ContentPlaceHolder1_lblTopupAmount4" style="font-weight:bold;">0.00</span>
+									</td>
+									<td>
+										<span id="ContentPlaceHolder1_lblpackagename4" style="font-weight:bold;"></span>
+									</td>
+								</tr>
+								<tr style="text-align: center">
+									<td>Registration Date</td>
+
+									<td>Sponsor User Name</td>
+									<td>Imm. Sponsor User Name</td>
+									<td>Block</td>
+									<td></td>
+								</tr>
+								<tr style="text-align: center">
+									<td>
+										<span id="ContentPlaceHolder1_lbldate4" style="font-weight:bold;">07-May-2021</span>
+									</td>
+
+									<td>
+										<span id="ContentPlaceHolder1_lblsponser4" style="font-weight:bold;">FFA546</span>
+									</td>
+									<td>
+										<span id="ContentPlaceHolder1_lblreferral4" style="font-weight:bold;">FFA546</span>
+									</td>
+									<td>
+										<span id="ContentPlaceHolder1_LblBlock4" style="font-weight:bold;"></span>
+									</td>
+									<td></td>
+								</tr>
+								<tr class="ts">
+									<td class="ts">&nbsp;</td>
+									<td class="ts">Left</td>
+									<td class="ts">Right</td>
+									<td class="ts">Total</td>
+									<td class="ts"></td>
+								</tr>
+
+								<tr>
+									<td class="tss">Team Structure</td>
+									<td class="tss">
+										<span id="ContentPlaceHolder1_lblleft4" style="font-weight:bold;">61</span>
+									</td>
+									<td class="tss">
+										<span id="ContentPlaceHolder1_lblright4" style="font-weight:bold;">12</span>
+									</td>
+									<td class="tss">
+										<span id="ContentPlaceHolder1_lbltotalmem4" style="font-weight:bold;">73</span>
+									</td>
+									<td class="tss">
+									</td>
+								</tr>
+								<tr>
+									<td class="tss">Team Plot Business</td>
+									<td class="tss">
+										<span id="ContentPlaceHolder1_lblSelfBusiness4" style="font-weight:bold;">2221000.00</span>
+									</td>
+									<td class="tss">
+										<span id="ContentPlaceHolder1_lblLeftBusiness4" style="font-weight:bold;">0.00</span>
+									</td>
+									<td class="tss">
+										<span id="ContentPlaceHolder1_lblRightBusiness4" style="font-weight:bold;">2221000.00</span>
+									</td>
+									<td class="tss">
+									</td>
+								</tr>
+
+							</tbody>
+						</table>
+
+					</div>
+
+					<div id="ContentPlaceHolder1_Panel5" class="PanelCSS" style="border-color: gray; border-width: 1px; border-style: solid; display: none; visibility: hidden; position: absolute;">
+
+						<table id="customers" border="1px" cellpadding="6px" class="table-bordered table-responsive table-striped">
+							<tbody>
+								<tr style="text-align: center;">
+									<td>Member Id</td>
+									<td>Member Name</td>
+									<td>User Name</td>
+									<td>Top-UP Amount</td>
+									<td>Package Name</td>
+								</tr>
+								<tr style="text-align: center">
+									<td>
+										<span id="ContentPlaceHolder1_lblid5" style="font-weight:bold;"></span>
+									</td>
+									<td>
+										<span id="ContentPlaceHolder1_lblname5" style="font-weight:bold;"></span>
+									</td>
+									<td>
+										<span id="ContentPlaceHolder1_lblUserID5" style="font-weight:bold;"></span>
+									</td>
+									<td>
+										<span id="ContentPlaceHolder1_lblTopupAmount5" style="font-weight:bold;"></span>
+									</td>
+									<td>
+										<span id="ContentPlaceHolder1_lblpackagename5" style="font-weight:bold;"></span>
+									</td>
+								</tr>
+								<tr style="text-align: center">
+									<td>Registration Date</td>
+
+									<td>Sponsor User Name</td>
+									<td>Imm. Sponsor User Name</td>
+									<td>Block</td>
+									<td></td>
+								</tr>
+								<tr style="text-align: center">
+									<td>
+										<span id="ContentPlaceHolder1_lbldate5" style="font-weight:bold;"></span>
+									</td>
+
+									<td>
+										<span id="ContentPlaceHolder1_lblsponser5" style="font-weight:bold;"></span>
+									</td>
+									<td>
+										<span id="ContentPlaceHolder1_lblreferral5" style="font-weight:bold;"></span>
+									</td>
+									<td>
+										<span id="ContentPlaceHolder1_LblBlock5" style="font-weight:bold;"></span>
+									</td>
+									<td></td>
+								</tr>
+								<tr class="ts">
+									<td class="ts">&nbsp;</td>
+									<td class="ts">Left</td>
+									<td class="ts">Right</td>
+									<td class="ts">Total</td>
+									<td class="ts"></td>
+								</tr>
+
+								<tr>
+									<td class="tss">Team Structure</td>
+									<td class="tss">
+										<span id="ContentPlaceHolder1_lblleft5" style="font-weight:bold;"></span>
+									</td>
+									<td class="tss">
+										<span id="ContentPlaceHolder1_lblright5" style="font-weight:bold;"></span>
+									</td>
+									<td class="tss">
+										<span id="ContentPlaceHolder1_lbltotalmem5" style="font-weight:bold;"></span>
+									</td>
+									<td class="tss">
+									</td>
+								</tr>
+								<tr>
+									<td class="tss">Team Plot Business</td>
+									<td class="tss">
+										<span id="ContentPlaceHolder1_lblSelfBusiness5" style="font-weight:bold;"></span>
+									</td>
+									<td class="tss">
+										<span id="ContentPlaceHolder1_lblLeftBusiness5" style="font-weight:bold;"></span>
+									</td>
+									<td class="tss">
+										<span id="ContentPlaceHolder1_lblRightBusiness5" style="font-weight:bold;"></span>
+									</td>
+									<td class="tss">
+									</td>
+								</tr>
+
+							</tbody>
+						</table>
+
+					</div>
+
+
+
+
+
+					<div id="ContentPlaceHolder1_Panel8" class="PanelCSS" style="border-color: gray; border-width: 1px; border-style: solid; display: none; visibility: hidden; position: absolute;">
+
+						<table id="customers" border="1px" cellpadding="6px" class="table-bordered table-responsive table-striped">
+							<tbody>
+								<tr style="text-align: center;">
+									<td>Member Id</td>
+									<td>Member Name</td>
+									<td>User Name</td>
+									<td>Top-UP Amount</td>
+									<td>Package Name</td>
+								</tr>
+								<tr style="text-align: center">
+									<td>
+										<span id="ContentPlaceHolder1_lblid8" style="font-weight:bold;">CBC338</span>
+									</td>
+									<td>
+										<span id="ContentPlaceHolder1_lblname8" style="font-weight:bold;">DILNASHEEN ANJUM</span>
+									</td>
+									<td>
+										<span id="ContentPlaceHolder1_lblUserID8" style="font-weight:bold;">CBC338</span>
+									</td>
+									<td>
+										<span id="ContentPlaceHolder1_lblTopupAmount8" style="font-weight:bold;">0.00</span>
+									</td>
+									<td>
+										<span id="ContentPlaceHolder1_lblpackagename8" style="font-weight:bold;"></span>
+									</td>
+								</tr>
+								<tr style="text-align: center">
+									<td>Registration Date</td>
+
+									<td>Sponsor User Name</td>
+									<td>Imm. Sponsor User Name</td>
+									<td>Block</td>
+									<td></td>
+								</tr>
+								<tr style="text-align: center">
+									<td>
+										<span id="ContentPlaceHolder1_lbldate8" style="font-weight:bold;">07-May-2021</span>
+									</td>
+
+									<td>
+										<span id="ContentPlaceHolder1_lblsponser8" style="font-weight:bold;">DGA096</span>
+									</td>
+									<td>
+										<span id="ContentPlaceHolder1_lblreferral8" style="font-weight:bold;">DGA096</span>
+									</td>
+									<td>
+										<span id="ContentPlaceHolder1_LblBlock8" style="font-weight:bold;"></span>
+									</td>
+									<td></td>
+								</tr>
+								<tr>
+									<td class="ts">&nbsp;</td>
+									<td class="ts">Left</td>
+									<td class="ts">Right</td>
+									<td class="ts">Total</td>
+									<td class="ts"></td>
+								</tr>
+
+								<tr>
+									<td class="tss">Team Structure</td>
+									<td class="tss">
+										<span id="ContentPlaceHolder1_lblleft8" style="font-weight:bold;">59</span>
+									</td>
+									<td class="tss">
+										<span id="ContentPlaceHolder1_lblright8" style="font-weight:bold;">1</span>
+									</td>
+									<td class="tss">
+										<span id="ContentPlaceHolder1_lbltotalmem8" style="font-weight:bold;">60</span>
+									</td>
+									<td class="tss">
+									</td>
+								</tr>
+								<tr>
+									<td class="tss">Team Plot Business</td>
+									<td class="tss">
+										<span id="ContentPlaceHolder1_lblSelfBusiness8" style="font-weight:bold;">2221000.00</span>
+									</td>
+									<td class="tss">
+										<span id="ContentPlaceHolder1_lblLeftBusiness8" style="font-weight:bold;">0.00</span>
+									</td>
+									<td class="tss">
+										<span id="ContentPlaceHolder1_lblRightBusiness8" style="font-weight:bold;">2221000.00</span>
+									</td>
+									<td class="tss">
+									</td>
+								</tr>
+
+							</tbody>
+						</table>
+
+					</div>
+
+					<div id="ContentPlaceHolder1_Panel9" class="PanelCSS" style="border-color: gray; border-width: 1px; border-style: solid; display: none; visibility: hidden; position: absolute;">
+
+						<table id="customers" border="1px" cellpadding="6px" class="table-bordered table-responsive table-striped">
+							<tbody>
+								<tr style="text-align: center;">
+									<td>Member Id</td>
+									<td>Member Name</td>
+									<td>User Name</td>
+									<td>Top-UP Amount</td>
+									<td>Package Name</td>
+								</tr>
+								<tr style="text-align: center">
+									<td>
+										<span id="ContentPlaceHolder1_lblid9" style="font-weight:bold;">DBF294</span>
+									</td>
+									<td>
+										<span id="ContentPlaceHolder1_lblname9" style="font-weight:bold;">RIZWANA KHATOON</span>
+									</td>
+									<td>
+										<span id="ContentPlaceHolder1_lblUserID9" style="font-weight:bold;">DBF294</span>
+									</td>
+									<td>
+										<span id="ContentPlaceHolder1_lblTopupAmount9" style="font-weight:bold;">0.00</span>
+									</td>
+									<td>
+										<span id="ContentPlaceHolder1_lblpackagename9" style="font-weight:bold;"></span>
+									</td>
+								</tr>
+								<tr style="text-align: center">
+									<td>Registration Date</td>
+
+									<td>Sponsor User Name</td>
+									<td>Imm. Sponsor User Name</td>
+									<td>Block</td>
+									<td></td>
+								</tr>
+								<tr style="text-align: center">
+									<td>
+										<span id="ContentPlaceHolder1_lbldate9" style="font-weight:bold;">20-Jul-2021</span>
+									</td>
+
+									<td>
+										<span id="ContentPlaceHolder1_lblsponser9" style="font-weight:bold;">DGA096</span>
+									</td>
+									<td>
+										<span id="ContentPlaceHolder1_lblreferral9" style="font-weight:bold;">DGA096</span>
+									</td>
+									<td>
+										<span id="ContentPlaceHolder1_LblBlock9" style="font-weight:bold;"></span>
+									</td>
+									<td></td>
+								</tr>
+								<tr>
+									<td class="ts">&nbsp;</td>
+									<td class="ts">Left</td>
+									<td class="ts">Right</td>
+									<td class="ts">Total</td>
+									<td class="ts"></td>
+								</tr>
+
+								<tr>
+									<td class="tss">Team Structure</td>
+									<td class="tss">
+										<span id="ContentPlaceHolder1_lblleft9" style="font-weight:bold;">0</span>
+									</td>
+									<td class="tss">
+										<span id="ContentPlaceHolder1_lblright9" style="font-weight:bold;">11</span>
+									</td>
+									<td class="tss">
+										<span id="ContentPlaceHolder1_lbltotalmem9" style="font-weight:bold;">11</span>
+									</td>
+									<td class="tss">
+									</td>
+								</tr>
+								<tr>
+									<td class="tss">Team Plot Business</td>
+									<td class="tss">
+										<span id="ContentPlaceHolder1_lblSelfBusiness9" style="font-weight:bold;">0.00</span>
+									</td>
+									<td class="tss">
+										<span id="ContentPlaceHolder1_lblLeftBusiness9" style="font-weight:bold;">0.00</span>
+									</td>
+									<td class="tss">
+										<span id="ContentPlaceHolder1_lblRightBusiness9" style="font-weight:bold;">0.00</span>
+									</td>
+									<td class="tss">
+									</td>
+								</tr>
+
+							</tbody>
+						</table>
+
+					</div>
+
+
+
+
+
+
+
+
+
+
+
+
+				</div>
+			</div>
+		</div>
+
+
+	</div>
+</div>
+
